@@ -59,7 +59,7 @@ function NavComponent() {
           </Nav.Link>
           <Nav.Link href="#home" className="border-end border-1 d-none d-sm-block">
             <NavDropdown
-              id="nav-dropdown-dark-example"
+              id="mdProfileDropdown"
               title={
                 <div className="d-flex flex-column align-items-center">
                   <img src={"https://thispersondoesnotexist.com/"} alt="profile pic" className="rounded-circle mb-1" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
@@ -76,7 +76,7 @@ function NavComponent() {
           </Nav.Link>
           <Nav.Link href="#home" className="d-none d-sm-block">
             <NavDropdown
-              id="nav-dropdown-dark-example"
+              id="mdBusinessDropdown"
               title={
                 <div className="d-flex flex-column align-items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
@@ -93,17 +93,14 @@ function NavComponent() {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav.Link>
+
           <Nav.Link href="#home" className="d-sm-none">
-            <NavDropdown id="nav-dropdown-dark-example" title={<ThreeDots fill="currentColor" width="30" height="30" />} drop="start">
+            <NavDropdown id="xsDropdown" title={<ThreeDots fill="currentColor" width="30" height="30" />} drop="start" className="xs-dropdown">
               <NavDropdown
-                id="nav-dropdown-dark-example"
-                title={
-                  <div className="d-flex flex-column align-items-center">
-                    <img src={"https://thispersondoesnotexist.com/"} alt="profile pic" className="rounded-circle mb-1" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
-                    <small className="d-none d-lg-block">Me</small>
-                  </div>
-                }
-                drop="down-centered"
+                id="xsProfileDropdown"
+                title={<img src={"https://thispersondoesnotexist.com/"} alt="profile pic" className="rounded-circle mb-1" style={{ width: "24px", height: "24px", objectFit: "contain" }} />}
+                drop="down"
+                className="xs-profile-dropdown"
               >
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -113,15 +110,14 @@ function NavComponent() {
               </NavDropdown>
 
               <NavDropdown
-                id="nav-dropdown-dark-example"
+                id="xsBusinessDropdown"
                 title={
-                  <div className="d-flex flex-column align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
-                      <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
-                    </svg>
-                    <small className="d-none d-lg-block">For Business</small>
-                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
+                    <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
+                  </svg>
                 }
+                className="xs-business-dropdown"
+                drop="down"
               >
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

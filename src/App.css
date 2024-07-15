@@ -25,6 +25,17 @@ nav {
   display: none !important;
 }
 
+.xs-dropdown .show {
+  display: flex;
+  justify-content: center;
+}
+
+.xs-business-dropdown .show,
+.xs-profile-dropdown .show {
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (max-widht: 991px) {
   .nav-small {
     display: none !important;
