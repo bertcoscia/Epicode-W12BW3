@@ -8,3 +8,41 @@ nav {
   top: 0 !important;
   right: 0 !important;
 }
+
+.search-input {
+  background-color: #edf3f8;
+}
+
+.nav-search-bar {
+  border-left: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-toggle::before {
+  display: none !important;
+}
+
+@media screen and (max-widht: 991px) {
+  .nav-small {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-search {
+    display: none !important;
+  }
+
+  .nav-link {
+    margin-inline: 0.5rem !important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .nav-search-icon {
+    display: none !important;
+  }
+}
