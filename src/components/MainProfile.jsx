@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button, Image, CardBody } from "react-bootstrap";
-import { Pencil, PlusLg } from "react-bootstrap-icons";
+import { ArrowRight, Pencil, PlusLg } from "react-bootstrap-icons";
 function MainProfile() {
   return (
     <>
@@ -224,6 +224,47 @@ function MainProfile() {
               />
             </div>
           </div>
+        </CardBody>
+      </Card>
+
+      {/* NUOVE CARD */}
+      <Card className="bg-white pt-4 px-3 rounded mb-2">
+        <div className="d-flex justify-content-between">
+          <h1 className="fs-3 ps-2">Experience</h1>
+          <div className="d-flex pe-3">
+            <PlusLg className="me-3" /> <Pencil />
+          </div>
+        </div>
+        <CardBody>
+          <article className="border-bottom mb-3">
+            <h1 className="fs-4">React</h1>
+            <div className="d-flex">
+              <img
+                className="me-3"
+                height={"25px"}
+                width={"25px"}
+                src="https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg"
+                alt="Logo Epicode"
+              />
+              <p>EPICODE</p>
+            </div>
+          </article>
+          <article className="border-bottom mb-3">
+            <h1 className="fs-4">SASS</h1>
+            <div className="d-flex">
+              <img
+                className="me-3"
+                height={"25px"}
+                width={"25px"}
+                src="https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg"
+                alt="Logo Epicode"
+              />
+              <p>EPICODE</p>
+            </div>
+          </article>
+          <h2 className="fs-5 text-center">
+            Show all 23 skills <ArrowRight />
+          </h2>
         </CardBody>
       </Card>
     </>
