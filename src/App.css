@@ -43,6 +43,26 @@ nav {
   overflow: hidden;
 }
 
+.btn-primary {
+  background-color: #0966c2 !important;
+  &:hover {
+    background-color: #004182 !important;
+  }
+}
+
+.btn-outline-primary {
+  color: #0966c2 !important;
+  border-color: #0966c2 !important;
+  &:hover {
+    background-color: #ebf3fc !important;
+    border-color: #024383 !important;
+  }
+}
+
+.btn-light:hover {
+  border-color: #181818 !important;
+}
+
 @media screen and (max-widht: 991px) {
   .nav-small {
     display: none !important;

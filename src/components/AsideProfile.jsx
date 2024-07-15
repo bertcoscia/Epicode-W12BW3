@@ -19,21 +19,19 @@ const AsideProfile = () => {
 
   return (
     <Col sm={3}>
-      <Card>
-        <Card.Body>
-          <Card.Title>
-            Profile language <Pencil />
-          </Card.Title>
-          <Card.Text>English</Card.Text>
-        </Card.Body>
+      <div className="card p-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <h5>Profile language</h5> <Pencil className="ms-auto" />
+        </div>
+        <p>English</p>
         <hr />
-        <Card.Body>
-          <Card.Title>
-            Public profile & URL <Pencil />
-          </Card.Title>
-          <Card.Text>www.linkedin.com/in/profile</Card.Text>
-        </Card.Body>
-      </Card>
+
+        <div className="d-flex justify-content-between align-items-center mt-3">
+          <h5>Public profile & URL</h5> <Pencil className="ms-auto" />
+        </div>
+        <p>www.linkedin.com/in/profile</p>
+      </div>
+
       <Card className="mt-2" style={{ position: "sticky", top: "85px" }}>
         <h6 className="p-3">Other similar profiles</h6>
         {similarProfiles.length > 0 && (

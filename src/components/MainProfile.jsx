@@ -5,46 +5,56 @@ import { useSelector } from "react-redux";
 function MainProfile() {
   const profile = useSelector(state => state.profile.content);
 
+  const connectionsNumber = Math.floor(Math.random() * 500) + 1;
+
+  const connections = [connectionsNumber, "500+"];
+
+  const randomConnections = connections[Math.floor(Math.random() * connections.length)];
+
+  const heroImages = [
+    "https://i.pinimg.com/originals/76/e9/23/76e9238fca30a0fc41b6f5fac75b516b.jpg",
+    "https://marketplace.canva.com/EAENvp21inc/1/0/1600w/canva-simple-work-linkedin-banner-qt_TMRJF4m0.jpg",
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fsproutsocial.com%2Ftemplates%2Flinkedin-personal-banners%2F&psig=AOvVaw1Qo5vs1ORvoNZ7rnXIM2TQ&ust=1721157628845000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLCL3fzhqYcDFQAAAAAdAAAAABAJ",
+    "https://rerouting.ca/wp-content/uploads/2020/12/1.png",
+    "https://wallpapers.com/images/hd/technology-linkedin-background-dce01jsbpnn0z2ej.jpg"
+  ];
+
+  const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+
   return (
     <>
       {profile && (
         <Col xs={12} md={9}>
-          <Card id="profile" className=" mb-2 ps-2">
-            <Card.Header className="p-0">
-              <Card.Img
-                style={{ height: "200px" }}
-                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
-                alt="Background Image"
-                className="rounded-0 object-fit-cover"
-              />
-              <div className="position-absolute" style={{ top: "100px", left: "25px" }}>
-                <Image src={profile.image} roundedCircle style={{ width: "150px", border: "5px solid white" }} />
-              </div>
-            </Card.Header>
+          <div id="profile" className="card mb-2 ps-2">
+            <img style={{ height: "200px" }} src={randomHeroImage} alt="Background Image" className="rounded-0 object-fit-cover img-fluid" />
+            <div className="position-absolute" style={{ top: "100px", left: "25px" }}>
+              <Image src={profile.image} roundedCircle style={{ width: "150px", border: "5px solid white" }} />
+            </div>
+
             <Card.Body className="pt-5">
-              <Card.Title>
-                {`${profile.name} ${profile.surname}`}
-                <span style={{ fontSize: "0.8rem" }}>(He/Him)</span>
-              </Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{profile.title}</Card.Subtitle>
+              <Card.Title>{`${profile.name} ${profile.surname}`}</Card.Title>
+              <Card.Subtitle className="mb-2 text-dark-emphasis">{profile.title}</Card.Subtitle>
               <Card.Text>
-                {profile.area} ·<a href="#contact-info">Contact info</a>
+                {profile.area} ·{" "}
+                <a href="#home" className="text-decoration-none">
+                  Contact info
+                </a>
               </Card.Text>
-              <Card.Text>??connections</Card.Text>
-              <Button variant="primary" className="m-1">
+              <Card.Text>{randomConnections} connections</Card.Text>
+              <Button variant="primary" className="m-1 rounded-pill px-3 py-1">
                 Open to
               </Button>
-              <Button variant="outline-primary" className="m-1">
+              <Button variant="outline-primary" className="m-1 rounded-pill px-3 py-1">
                 Add profile section
               </Button>
-              <Button variant="outline-primary" className="m-1">
+              <Button variant="outline-primary" className="m-1 rounded-pill px-3 py-1">
                 Enhance profile
               </Button>
-              <Button variant="outline-secondary" className="m-1">
+              <Button variant="light" className="m-1 px-3 py-1 rounded-pill border border-dark-subtle">
                 More
               </Button>
             </Card.Body>
-          </Card>
+          </div>
 
           <Card id="about" className="bg-white py-4 px-3 rounded mb-2">
             <Card.Body>
@@ -66,8 +76,8 @@ function MainProfile() {
                   <h1 className="fs-3">Activity</h1>
                 </Card.Title>
                 <div className="d-flex">
-                  <Button variant="outline-primary" className="rounded-pill">
-                    Primary
+                  <Button variant="outline-primary" className="rounded-pill px-3 align-self-center">
+                    Create a post
                   </Button>
                   <div className="d-flex align-items-center ps-2">
                     <Pencil />
