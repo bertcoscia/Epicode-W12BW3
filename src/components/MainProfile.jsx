@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button, Image, CardBody } from "react-bootstrap";
 import { ArrowRight, Pencil, PlusLg } from "react-bootstrap-icons";
+import Footer from "./Footer";
 function MainProfile() {
   return (
     <>
@@ -230,12 +231,12 @@ function MainProfile() {
       {/* NUOVE CARD */}
       <Card className="bg-white pt-4 px-3 rounded mb-2">
         <div className="d-flex justify-content-between">
-          <h1 className="fs-3 ps-2">Experience</h1>
+          <h1 className="fs-3 ps-2">Skills</h1>
           <div className="d-flex pe-3">
             <PlusLg className="me-3" /> <Pencil />
           </div>
         </div>
-        <CardBody>
+        <CardBody className="ps-2">
           <article className="border-bottom mb-3">
             <h1 className="fs-4">React</h1>
             <div className="d-flex">
@@ -267,6 +268,29 @@ function MainProfile() {
           </h2>
         </CardBody>
       </Card>
+      <Card className="bg-white pt-4 px-3 rounded mb-2">
+        <div className="d-flex justify-content-between">
+          <h1 className="fs-3 ps-2">Languages</h1>
+          <div className="d-flex pe-3">
+            <PlusLg className="me-3" /> <Pencil />
+          </div>
+        </div>
+        <CardBody className="ps-2">
+          <article className="border-bottom">
+            <h3 className="fs-4">English</h3>
+            <p>Full professional proficiency</p>
+          </article>
+          <article className="border-bottom pt-3">
+            <h3 className="fs-4">French</h3>
+            <p>Full professional proficiency</p>
+          </article>
+        </CardBody>
+        <h2 className="fs-5 text-center">
+          Show all 5 languages <ArrowRight />
+        </h2>
+      </Card>
+      {/* FOOTER */}
+      <Footer />
     </>
   );
 }
