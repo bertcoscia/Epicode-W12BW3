@@ -5,16 +5,18 @@ import MainProfile from "./components/MainProfile";
 import NavComponent from "./components/NavComponent";
 import { Container, Row } from "react-bootstrap";
 import AsideProfile from "./components/AsideProfile";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
     <>
       <NavComponent />
-      <Container style={{ marginTop: "110px" }}>
-        <Row>
-          <MainProfile />
-        </Row>
-      </Container>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ProfilePage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
