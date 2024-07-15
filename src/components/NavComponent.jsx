@@ -1,19 +1,29 @@
+import { useEffect } from "react";
 import { Form, InputGroup, NavDropdown } from "react-bootstrap";
 import { Search, ThreeDots } from "react-bootstrap-icons";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileAction } from "../redux/actions";
 
 function NavComponent() {
+  const profile = useSelector(state => state.profile.content);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileAction());
+  }, []);
+
   return (
-    <Navbar className="bg-body-tertiary" style={{ height: "80px" }}>
+    <Navbar className="bg-body-tertiary" style={{ height: "80px", zIndex: "99" }}>
       <Container>
         <Navbar.Brand href="#home">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="#0966C2" width="45" height="45">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
         </Navbar.Brand>
-        <Form inline className="nav-search">
+        <Form inline="true" className="nav-search">
           <InputGroup>
             <InputGroup.Text id="search-icon" className="search-input border-end-none">
               <Search />
@@ -57,15 +67,48 @@ function NavComponent() {
             </svg>
             <small className="d-none d-lg-block">Notifications</small>
           </Nav.Link>
-          <Nav.Link href="#home" className="border-end border-1 d-none d-sm-block">
+          <NavDropdown
+            className="border-end border-1 d-none d-sm-block pe-3"
+            id="mdProfileDropdown"
+            title={
+              <div className="d-flex flex-column align-items-center">
+                <img src={profile && profile.image} alt="profile pic" className="rounded-circle mb-1 nav-bar-propic" style={{ height: "24px", width: "24px" }} />
+                <small className="d-none d-lg-block">Me</small>
+              </div>
+            }
+          >
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+          </NavDropdown>
+
+          <NavDropdown
+            className="d-none d-sm-block ms-2"
+            id="mdBusinessDropdown"
+            title={
+              <div className="d-flex flex-column align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
+                  <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
+                </svg>
+                <small className="d-none d-lg-block">For Business</small>
+              </div>
+            }
+          >
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+          </NavDropdown>
+
+          <NavDropdown className="d-sm-none xs-dropdown" id="xsDropdown" title={<ThreeDots fill="currentColor" width="30" height="30" />} drop="start">
             <NavDropdown
-              id="mdProfileDropdown"
-              title={
-                <div className="d-flex flex-column align-items-center">
-                  <img src={"https://thispersondoesnotexist.com/"} alt="profile pic" className="rounded-circle mb-1" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
-                  <small className="d-none d-lg-block">Me</small>
-                </div>
-              }
+              id="xsProfileDropdown"
+              title={<img src={profile && profile.image} alt="profile pic" className="rounded-circle mb-1" style={{ width: "24px", height: "24px", objectFit: "contain" }} />}
+              drop="down"
+              className="xs-profile-dropdown"
             >
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -73,18 +116,16 @@ function NavComponent() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
-          </Nav.Link>
-          <Nav.Link href="#home" className="d-none d-sm-block">
+
             <NavDropdown
-              id="mdBusinessDropdown"
+              id="xsBusinessDropdown"
               title={
-                <div className="d-flex flex-column align-items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
-                    <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
-                  </svg>
-                  <small className="d-none d-lg-block">For Business</small>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
+                  <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
+                </svg>
               }
+              className="xs-business-dropdown"
+              drop="down"
             >
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -92,41 +133,7 @@ function NavComponent() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
-          </Nav.Link>
-
-          <Nav.Link href="#home" className="d-sm-none">
-            <NavDropdown id="xsDropdown" title={<ThreeDots fill="currentColor" width="30" height="30" />} drop="start" className="xs-dropdown">
-              <NavDropdown
-                id="xsProfileDropdown"
-                title={<img src={"https://thispersondoesnotexist.com/"} alt="profile pic" className="rounded-circle mb-1" style={{ width: "24px", height: "24px", objectFit: "contain" }} />}
-                drop="down"
-                className="xs-profile-dropdown"
-              >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
-
-              <NavDropdown
-                id="xsBusinessDropdown"
-                title={
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
-                    <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
-                  </svg>
-                }
-                className="xs-business-dropdown"
-                drop="down"
-              >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
-            </NavDropdown>
-          </Nav.Link>
+          </NavDropdown>
         </Nav>
       </Container>
     </Navbar>

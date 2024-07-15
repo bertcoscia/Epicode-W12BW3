@@ -40,6 +40,18 @@ nav {
   .nav-small {
     display: none !important;
   }
+
+  .nav-bar-propic {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .nav-bar-propic {
+    width: 20px !important;
+    height: 20px !important;
+  }
 }
 
 @media screen and (max-width: 1024px) {
