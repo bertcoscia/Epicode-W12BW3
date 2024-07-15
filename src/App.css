@@ -63,6 +63,11 @@ nav {
   border-color: #181818 !important;
 }
 
+.activity-btn:focus {
+  background-color: #024c33 !important;
+  color: #ffffff !important;
+}
+
 @media screen and (max-widht: 991px) {
   .nav-small {
     display: none !important;
@@ -78,6 +83,10 @@ nav {
   .nav-bar-propic {
     width: 20px !important;
     height: 20px !important;
+  }
+
+  .similar-profile {
+    border-bottom: none !important;
   }
 }
 

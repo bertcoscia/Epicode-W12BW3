@@ -18,7 +18,7 @@ const AsideProfile = () => {
   const randomProfile5 = randomProfilesArray5[Math.floor(Math.random() * randomProfilesArray4.length)];
 
   return (
-    <Col sm={3}>
+    <Col xs={12} lg={4} xl={3}>
       <div className="card p-3">
         <div className="d-flex justify-content-between align-items-center">
           <h5>Profile language</h5> <Pencil className="ms-auto" />
