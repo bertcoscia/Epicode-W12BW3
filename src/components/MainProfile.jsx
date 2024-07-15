@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Image, CardHeader, CardBody } from "react-bootstrap";
+import { Card, Button, Image, CardBody } from "react-bootstrap";
 import { Pencil } from "react-bootstrap-icons";
 function MainProfile() {
   return (
@@ -150,6 +150,67 @@ function MainProfile() {
               tempore vel necessitatibus. A voluptate iure quo placeat
               repellendus molestiae quas quod, enim voluptatum velit, reiciendis
               cum aut voluptates. Aliquid, voluptatibus?
+            </div>
+          </div>
+        </CardBody>
+      </Card>
+      <Card id="education">
+        <CardBody className="d-flex">
+          <div>
+            <img
+              width={"50px"}
+              src="https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg"
+              alt=" Pic Profile Epicode"
+            />
+          </div>
+          <div>
+            <h1 className="fs-4 mb-0">EPICODE</h1>
+            <p className="mb-0">Bootcamp, Full Stack Web Developer</p>
+            <p className="mb-0">Apr 2024 - Oct 2024</p>
+            <h1 className="fs-6 my-3">HTML5,CSS3 and +4 skills</h1>
+            <div className="d-flex">
+              <img
+                className="me-1"
+                width={"100px"}
+                height={"60px"}
+                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
+                alt=" Pic Profile Epicode"
+              />
+              <img
+                className="me-1"
+                width={"100px"}
+                height={"60px"}
+                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
+                alt=" Pic Profile Epicode"
+              />
+              <img
+                className="me-1"
+                width={"100px"}
+                height={"60px"}
+                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
+                alt=" Pic Profile Epicode"
+              />
+              <img
+                className="me-1"
+                width={"100px"}
+                height={"60px"}
+                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
+                alt=" Pic Profile Epicode"
+              />
+              <img
+                className="me-1"
+                width={"100px"}
+                height={"60px"}
+                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
+                alt=" Pic Profile Epicode"
+              />
+              <img
+                className="me-1"
+                width={"100px"}
+                height={"60px"}
+                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
+                alt=" Pic Profile Epicode"
+              />
             </div>
           </div>
         </CardBody>
