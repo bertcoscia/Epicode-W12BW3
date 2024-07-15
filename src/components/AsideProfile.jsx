@@ -22,20 +22,20 @@ const AsideProfile = () => {
       <Card>
         <Card.Body>
           <Card.Title>
-            Lingua del profilo <Pencil />
+            Profile language <Pencil />
           </Card.Title>
-          <Card.Text>Italiano</Card.Text>
+          <Card.Text>English</Card.Text>
         </Card.Body>
         <hr />
         <Card.Body>
           <Card.Title>
-            Profilo pubblico e URL <Pencil />
+            Public profile & URL <Pencil />
           </Card.Title>
           <Card.Text>www.linkedin.com/in/profile</Card.Text>
         </Card.Body>
       </Card>
       <Card className="mt-2" style={{ position: "sticky", top: "85px" }}>
-        <h6 className="p-3">Altri profili simili</h6>
+        <h6 className="p-3">Other similar profiles</h6>
         {similarProfiles.length > 0 && (
           <>
             <SimilarProfile profile={randomProfile5} />
