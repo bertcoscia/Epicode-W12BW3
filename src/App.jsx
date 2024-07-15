@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import NavComponent from "./components/NavComponent";
+
+import MainProfile from "./components/MainProfile";
 
 function App() {
-  return <NavComponent />;
+  return <MainProfile />;
 }
 
 export default App;
