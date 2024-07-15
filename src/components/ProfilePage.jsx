@@ -3,11 +3,10 @@ import MainProfile from "./MainProfile";
 import AsideProfile from "./AsideProfile";
 import { getSimilarProfilesAction } from "../redux/actions";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
-  const similarProfiles = useSelector(state => state.similarProfiles.content);
 
   useEffect(() => {
     dispatch(getSimilarProfilesAction());
