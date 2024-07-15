@@ -1,12 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import NavComponent from "./components/NavComponent";
 
 function App() {
-  return (
-    <div>
-      <h1>Ciao</h1>
-    </div>
-  );
+  return <NavComponent />;
 }
 
 export default App;
