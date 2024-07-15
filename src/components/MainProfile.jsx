@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button, Image, CardBody } from "react-bootstrap";
-import { Pencil } from "react-bootstrap-icons";
+import { Pencil, PlusLg } from "react-bootstrap-icons";
 function MainProfile() {
   return (
     <>
@@ -110,7 +110,12 @@ function MainProfile() {
         </Card.Body>
       </Card>
       <Card id="experience" className="bg-white pt-4 px-3 rounded mb-2">
-        <h1 className="fs-3 ps-2">Experience</h1>
+        <div className="d-flex justify-content-between">
+          <h1 className="fs-3 ps-2">Experience</h1>
+          <div className="d-flex pe-3">
+            <PlusLg className="me-3" /> <Pencil />
+          </div>
+        </div>
         <CardBody className="d-flex bg-white border-0 ps-2 pb-2 border border-bottom">
           <div>
             <img
@@ -154,7 +159,13 @@ function MainProfile() {
           </div>
         </CardBody>
       </Card>
-      <Card id="education">
+      <Card id="education" className="pt-4 px-3 rounded mb-2 ">
+        <div className="d-flex justify-content-between">
+          <h1 className="fs-3 ps-2">Education</h1>
+          <div className="d-flex pe-3">
+            <PlusLg className="me-3" /> <Pencil />
+          </div>
+        </div>
         <CardBody className="d-flex">
           <div>
             <img
