@@ -8,7 +8,7 @@ function MainProfile() {
   return (
     <>
       {profile && (
-        <Col xs={12}>
+        <Col xs={12} md={10}>
           <Card id="profile" className=" mb-2 ps-2">
             <Card.Header className="p-0">
               <Card.Img
