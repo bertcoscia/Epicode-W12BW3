@@ -117,7 +117,7 @@ function MainProfile() {
             <p className="my-3">{profile.bio}</p>
           </div>
 
-          <div id="activity" className="card bg-white py-4 px-3 rounded mb-2">
+          <div id="activity" className="card bg-white pt-4 px-3 rounded mb-2">
             <div className="d-flex justify-content-between mb-3">
               <h3>Activity</h3>
               <div className="d-flex justify-content-between align-items-center">
@@ -162,7 +162,9 @@ function MainProfile() {
               Voluptas molestiae ea soluta ad exercitationem eligendi, culpa
               ducimus saepe pariatur.
             </div>
-            <div className="fs-5 fw-bold text-center py-2">Show All Posts</div>
+            <h2 className="fs-5 text-center py-2">
+              Show all posts <ArrowRight />
+            </h2>
           </div>
 
           <div id="experience" className="card bg-white pt-4 px-3 rounded mb-2">
