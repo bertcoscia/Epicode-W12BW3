@@ -1,13 +1,8 @@
-import {
-  CaretDownFill,
-  GearFill,
-  QuestionCircleFill,
-  ShieldShaded,
-} from "react-bootstrap-icons";
+import { CaretDownFill, GearFill, QuestionCircleFill, ShieldShaded } from "react-bootstrap-icons";
 
-function Footer() {
+function FooterComponent() {
   return (
-    <section className="container">
+    <footer className="container">
       <div className="row">
         <div className="col-12 col-md-3 mb-4">
           <p>About</p>
@@ -60,8 +55,8 @@ function Footer() {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
 
-export default Footer;
+export default FooterComponent;

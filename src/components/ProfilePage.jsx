@@ -4,6 +4,7 @@ import AsideProfile from "./AsideProfile";
 import { getSimilarProfilesAction } from "../redux/actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import FooterComponent from "./FooterComponent";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ProfilePage = () => {
         <MainProfile />
         <AsideProfile />
       </Row>
+      <FooterComponent />
     </Container>
   );
 };
