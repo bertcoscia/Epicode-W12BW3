@@ -1,5 +1,10 @@
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import { CaretDownFill, GearFill, QuestionCircleFill, ShieldShaded } from "react-bootstrap-icons";
+import {
+  CaretDownFill,
+  GearFill,
+  QuestionCircleFill,
+  ShieldShaded,
+} from "react-bootstrap-icons";
 
 function FooterComponent() {
   return (
