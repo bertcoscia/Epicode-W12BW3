@@ -1,5 +1,6 @@
-import { Button, Image, Col } from "react-bootstrap";
-import { Pencil, PlusLg } from "react-bootstrap-icons";
+import { useState } from "react";
+import { Button, Image, Col, Modal } from "react-bootstrap";
+import { Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
 function MainProfile() {
@@ -10,6 +11,10 @@ function MainProfile() {
   const connections = [connectionsNumber, "500+"];
 
   const randomConnections = connections[Math.floor(Math.random() * connections.length)];
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const heroImages = [
     "https://i.pinimg.com/originals/76/e9/23/76e9238fca30a0fc41b6f5fac75b516b.jpg",
@@ -36,10 +41,26 @@ function MainProfile() {
               <p className="mb-2 text-dark-emphasis">{profile.title}</p>
               <p>
                 {profile.area} ·
-                <a href="#home" className="text-decoration-none">
+                <span className="ms-1 text-primary text-decoration-none" onClick={handleShow} style={{ cursor: "pointer" }}>
                   Contact info
-                </a>
+                </span>
               </p>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>{`${profile.name} ${profile.surname}`}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <h4>Contact info</h4>
+                  <div className="d-flex align-items-start my-3">
+                    <Envelope width={24} height={24} />
+                    <div className="d-flex flex-column ms-3">
+                      <h5>Email</h5>
+                      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                    </div>
+                  </div>
+                </Modal.Body>
+              </Modal>
+
               <a href="#home">{randomConnections} connections</a>
               <div className="d-flex justify-content-start column-gap-2 my-3">
                 <Button variant="primary" className="rounded-pill px-lg-3 py-1 align-self-center">
