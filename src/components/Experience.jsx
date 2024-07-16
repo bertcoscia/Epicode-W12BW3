@@ -7,7 +7,7 @@ import { Form, Modal, Button } from "react-bootstrap";
 
 const Experience = ({ id }) => {
   const dispatch = useDispatch();
-  const experience = useSelector((state) => state.experience.content);
+  const experience = useSelector(state => state.experience.content);
 
   const [show2, setShow2] = useState(false);
   const handleShow2 = () => setShow2(true);
@@ -22,67 +22,49 @@ const Experience = ({ id }) => {
       <div className="d-flex justify-content-between mb-2">
         <h3>Experience</h3>
         <div className="d-flex">
-          <PlusLg
-            className="me-3"
-            onClick={handleShow2}
-            style={{ cursor: "pointer" }}
-          />
+          <PlusLg className="me-3" onClick={handleShow2} style={{ cursor: "pointer" }} />
 
           <Modal show={show2} onHide={handleClose2} size="lg">
             <Modal.Header closeButton>
-              <Modal.Title>Aggiungi esperienza</Modal.Title>
+              <Modal.Title>Add experience</Modal.Title>
             </Modal.Header>
-            <p className="ps-3 pt-2">* indica che è obbligatorio </p>
+            <p className="ps-3 pt-2">* Required </p>
             <Modal.Body>
               <Form>
                 <Form.Group className="mb-3" controlId="Input1">
-                  <Form.Label>Qualifica*</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Esempio: Retail Sales Manager"
-                    required
-                  />
+                  <Form.Label>Title*</Form.Label>
+                  <Form.Control type="text" placeholder="Ex: Retail Sales Manager" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="input2">
-                  <Form.Label>Nome azienda*</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Esempio: Microsoft"
-                    required
-                  />
+                  <Form.Label>Company name*</Form.Label>
+                  <Form.Control type="text" placeholder="Ex: Microsoft" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="input3">
-                  <Form.Label>Località</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Esempio: Milano, Italia"
-                  />
+                  <Form.Label>Location</Form.Label>
+                  <Form.Control type="text" placeholder="Ex: London, United Kingdom" />
                 </Form.Group>
-                <Form.Check
-                  label="Attualmente ricopro questo ruolo"
-                  className="mb-3"
-                />
+                <Form.Check label="I am currently working in this role" className="mb-3" />
                 <Form.Group className="mb-3">
-                  <Form.Label>Data di inizio*</Form.Label>
+                  <Form.Label>Start Date*</Form.Label>
                   <div className="d-flex gap-3">
                     <Form.Select required>
-                      <option>Mese</option>
-                      <option value="1">Gennaio</option>
-                      <option value="2">Febbraio</option>
-                      <option value="3">Marzo</option>
-                      <option value="4">Aprile</option>
-                      <option value="5">Maggio</option>
-                      <option value="6">Giugno</option>
-                      <option value="7">Luglio</option>
-                      <option value="8">Agosto</option>
-                      <option value="9">Settembre</option>
-                      <option value="10">Ottobre</option>
-                      <option value="11">Novembre</option>
-                      <option value="12">Dicembre</option>
+                      <option>Month</option>
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
                     </Form.Select>
                     <Form.Select required>
-                      <option>Anno</option>
+                      <option>Year</option>
                       <option value="1">2024</option>
                       <option value="2">2023</option>
                       <option value="3">2022</option>
@@ -97,25 +79,25 @@ const Experience = ({ id }) => {
                   </div>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Data di fine</Form.Label>
+                  <Form.Label>End date</Form.Label>
                   <div className="d-flex gap-3">
                     <Form.Select>
-                      <option>Mese</option>
-                      <option value="1">Gennaio</option>
-                      <option value="2">Febbraio</option>
-                      <option value="3">Marzo</option>
-                      <option value="4">Aprile</option>
-                      <option value="5">Maggio</option>
-                      <option value="6">Giugno</option>
-                      <option value="7">Luglio</option>
-                      <option value="8">Agosto</option>
-                      <option value="9">Settembre</option>
-                      <option value="10">Ottobre</option>
-                      <option value="11">Novembre</option>
-                      <option value="12">Dicembre</option>
+                      <option>Month</option>
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
                     </Form.Select>
                     <Form.Select>
-                      <option>Anno</option>
+                      <option>Year</option>
                       <option value="1">2024</option>
                       <option value="2">2023</option>
                       <option value="3">2022</option>
@@ -130,26 +112,19 @@ const Experience = ({ id }) => {
                   </div>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Descrizione</Form.Label>
+                  <Form.Label>Description</Form.Label>
                   <Form.Control as="textarea" rows={3} />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Modal.Title className="fs-5">Media</Modal.Title>
-                  <p>
-                    Aggiungi contenuti multimediali come immagini, documenti,
-                    siti o presentazioni.
-                  </p>
+                  <p>Add media like images, documents, sites or presentations.</p>
                   <Button variant="outline-primary" className="rounded-pill">
-                    + Aggiungi media
+                    + Add media
                   </Button>
                 </Form.Group>
                 <Modal.Footer>
-                  <Button
-                    variant="primary"
-                    className="rounded-pill px-3"
-                    type="submit"
-                  >
-                    Salva
+                  <Button variant="primary" className="rounded-pill px-3" type="submit">
+                    Save
                   </Button>
                 </Modal.Footer>
               </Form>
@@ -158,10 +133,7 @@ const Experience = ({ id }) => {
           <Pencil />
         </div>
       </div>
-      {experience.length > 0 &&
-        experience.map((item) => (
-          <SingleExperience key={item._id} experience={item} />
-        ))}
+      {experience.length > 0 && experience.map(item => <SingleExperience key={item._id} experience={item} />)}
     </div>
   );
 };
