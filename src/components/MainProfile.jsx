@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Image, Col, Modal, Form, Alert } from "react-bootstrap";
 import { Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
+import Experience from "./Experience";
 
 function MainProfile() {
   const profile = useSelector((state) => state.profile.content);
@@ -16,10 +17,6 @@ function MainProfile() {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
-  const [show2, setShow2] = useState(false);
-  const handleShow2 = () => setShow2(true);
-  const handleClose2 = () => setShow2(false);
 
   const heroImages = [
     "https://i.pinimg.com/originals/76/e9/23/76e9238fca30a0fc41b6f5fac75b516b.jpg",
@@ -169,192 +166,7 @@ function MainProfile() {
             <div className="fs-5 fw-bold text-center py-2">Show All Posts</div>
           </div>
 
-          <div id="experience" className="card bg-white pt-4 px-3 rounded mb-2">
-            <div className="d-flex justify-content-between">
-              <h3>Experience</h3>
-              <div className="d-flex">
-                <PlusLg
-                  className="me-3"
-                  onClick={handleShow2}
-                  style={{ cursor: "pointer" }}
-                />
-
-                <Modal show={show2} onHide={handleClose2} size="lg">
-                  <Modal.Header closeButton>
-                    <Modal.Title>Aggiungi esperienza</Modal.Title>
-                  </Modal.Header>
-                  <p className="ps-3 pt-2">* indica che è obbligatorio </p>
-                  <Modal.Body>
-                    <Form>
-                      <Form.Group className="mb-3" controlId="Input1">
-                        <Form.Label>Qualifica*</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Esempio: Retail Sales Manager"
-                          required
-                        />
-                      </Form.Group>
-
-                      <Form.Group className="mb-3" controlId="input2">
-                        <Form.Label>Nome azienda*</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Esempio: Microsoft"
-                          required
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3" controlId="input3">
-                        <Form.Label>Località</Form.Label>
-                        <Form.Control
-                          type="text"
-                          placeholder="Esempio: Milano, Italia"
-                        />
-                      </Form.Group>
-                      <Form.Check
-                        label="Attualmente ricopro questo ruolo"
-                        className="mb-3"
-                      />
-                      <Form.Group className="mb-3">
-                        <Form.Label>Data di inizio*</Form.Label>
-                        <div className="d-flex gap-3">
-                          <Form.Select required>
-                            <option>Mese</option>
-                            <option value="1">Gennaio</option>
-                            <option value="2">Febbraio</option>
-                            <option value="3">Marzo</option>
-                            <option value="4">Aprile</option>
-                            <option value="5">Maggio</option>
-                            <option value="6">Giugno</option>
-                            <option value="7">Luglio</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Settembre</option>
-                            <option value="10">Ottobre</option>
-                            <option value="11">Novembre</option>
-                            <option value="12">Dicembre</option>
-                          </Form.Select>
-                          <Form.Select required>
-                            <option>Anno</option>
-                            <option value="1">2024</option>
-                            <option value="2">2023</option>
-                            <option value="3">2022</option>
-                            <option value="4">2021</option>
-                            <option value="5">2020</option>
-                            <option value="6">2019</option>
-                            <option value="7">2018</option>
-                            <option value="8">2017</option>
-                            <option value="9">2016</option>
-                            <option value="10">2015</option>
-                          </Form.Select>
-                        </div>
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Data di fine</Form.Label>
-                        <div className="d-flex gap-3">
-                          <Form.Select>
-                            <option>Mese</option>
-                            <option value="1">Gennaio</option>
-                            <option value="2">Febbraio</option>
-                            <option value="3">Marzo</option>
-                            <option value="4">Aprile</option>
-                            <option value="5">Maggio</option>
-                            <option value="6">Giugno</option>
-                            <option value="7">Luglio</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Settembre</option>
-                            <option value="10">Ottobre</option>
-                            <option value="11">Novembre</option>
-                            <option value="12">Dicembre</option>
-                          </Form.Select>
-                          <Form.Select>
-                            <option>Anno</option>
-                            <option value="1">2024</option>
-                            <option value="2">2023</option>
-                            <option value="3">2022</option>
-                            <option value="4">2021</option>
-                            <option value="5">2020</option>
-                            <option value="6">2019</option>
-                            <option value="7">2018</option>
-                            <option value="8">2017</option>
-                            <option value="9">2016</option>
-                            <option value="10">2015</option>
-                          </Form.Select>
-                        </div>
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Descrizione</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Modal.Title className="fs-5">Media</Modal.Title>
-                        <p>
-                          Aggiungi contenuti multimediali come immagini,
-                          documenti, siti o presentazioni.
-                        </p>
-                        <Button
-                          variant="outline-primary"
-                          className="rounded-pill"
-                        >
-                          + Aggiungi media
-                        </Button>
-                      </Form.Group>
-                      <Modal.Footer>
-                        <Button
-                          variant="primary"
-                          className="rounded-pill px-3"
-                          type="submit"
-                        >
-                          Salva
-                        </Button>
-                      </Modal.Footer>
-                    </Form>
-                  </Modal.Body>
-                </Modal>
-                <Pencil />
-              </div>
-            </div>
-            <div className="d-flex border-0 pb-2 my-2 border border-bottom">
-              <div>
-                <img
-                  style={{ width: "48px", height: "48px" }}
-                  src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
-                  alt="pic profile agency"
-                />
-              </div>
-              <div className="ms-2">
-                <h5 className="mb-0">Ruolo</h5>
-                <p className="mb-0">Agenzia</p>
-                <p className="mb-0">Apr 2023 - Sept 2023 &bull; 6 mos</p>
-                <p>Luogo</p>
-                <p className="line-clamp pt-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Possimus tempore vel necessitatibus. A voluptate iure quo
-                  placeat repellendus molestiae quas quod, enim voluptatum
-                  velit, reiciendis cum aut voluptates. Aliquid, voluptatibus?
-                </p>
-              </div>
-            </div>
-            <div className="d-flex border-0 pb-2 my-2">
-              <div>
-                <img
-                  style={{ width: "48px", height: "48px" }}
-                  src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
-                  alt="pic profile agency"
-                />
-              </div>
-              <div className="ms-2">
-                <h5 className="mb-0">Ruolo</h5>
-                <p className="mb-0">Agenzia</p>
-                <p className="mb-0">Apr 2023 - Sept 2023 &bull; 6 mos</p>
-                <p>Luogo</p>
-                <p className="line-clamp pt-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Possimus tempore vel necessitatibus. A voluptate iure quo
-                  placeat repellendus molestiae quas quod, enim voluptatum
-                  velit, reiciendis cum aut voluptates. Aliquid, voluptatibus?
-                </p>
-              </div>
-            </div>
-          </div>
+          {profile && <Experience id={profile._id} />}
 
           <div id="education" className="card bg-white pt-4 px-3 rounded mb-2">
             <div className="d-flex justify-content-between">
