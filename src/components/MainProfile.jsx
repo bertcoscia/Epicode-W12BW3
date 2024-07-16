@@ -3,6 +3,8 @@ import { Button, Image, Col, Modal } from "react-bootstrap";
 import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
+import Experience from "./Experience";
+
 function MainProfile() {
   const profile = useSelector((state) => state.profile.content);
 
@@ -53,7 +55,7 @@ function MainProfile() {
             <div className="mt-5 ms-3">
               <h2>{`${profile.name} ${profile.surname}`}</h2>
               <p className="mb-2 text-dark-emphasis">{profile.title}</p>
-              <p>
+              <p className="text-muted">
                 {profile.area} ·
                 <span
                   className="ms-1 text-primary text-decoration-none"
@@ -167,57 +169,7 @@ function MainProfile() {
             </h2>
           </div>
 
-          <div id="experience" className="card bg-white pt-4 px-3 rounded mb-2">
-            <div className="d-flex justify-content-between mb-3">
-              <h3>Experience</h3>
-              <div className="d-flex">
-                <PlusLg className="me-3" />
-                <Pencil />
-              </div>
-            </div>
-            <div className="d-flex border-0 pb-2 my-2 border border-bottom">
-              <div>
-                <img
-                  style={{ width: "48px", height: "48px" }}
-                  src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
-                  alt="pic profile agency"
-                />
-              </div>
-              <div className="ms-2">
-                <h5 className="mb-0">Ruolo</h5>
-                <p className="mb-0">Agenzia</p>
-                <p className="mb-0">Apr 2023 - Sept 2023 &bull; 6 mos</p>
-                <p>Luogo</p>
-                <p className="line-clamp pt-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Possimus tempore vel necessitatibus. A voluptate iure quo
-                  placeat repellendus molestiae quas quod, enim voluptatum
-                  velit, reiciendis cum aut voluptates. Aliquid, voluptatibus?
-                </p>
-              </div>
-            </div>
-            <div className="d-flex border-0 pb-2 my-2">
-              <div>
-                <img
-                  style={{ width: "48px", height: "48px" }}
-                  src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
-                  alt="pic profile agency"
-                />
-              </div>
-              <div className="ms-2">
-                <h5 className="mb-0">Ruolo</h5>
-                <p className="mb-0">Agenzia</p>
-                <p className="mb-0">Apr 2023 - Sept 2023 &bull; 6 mos</p>
-                <p>Luogo</p>
-                <p className="line-clamp pt-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Possimus tempore vel necessitatibus. A voluptate iure quo
-                  placeat repellendus molestiae quas quod, enim voluptatum
-                  velit, reiciendis cum aut voluptates. Aliquid, voluptatibus?
-                </p>
-              </div>
-            </div>
-          </div>
+          {profile && <Experience id={profile._id} />}
 
           <div id="education" className="card bg-white pt-4 px-3 rounded mb-2">
             <div className="d-flex justify-content-between mb-3">

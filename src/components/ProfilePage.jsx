@@ -1,12 +1,15 @@
 import { Container, Row } from "react-bootstrap";
 import MainProfile from "./MainProfile";
 import AsideProfile from "./AsideProfile";
-import { getSimilarProfilesAction } from "../redux/actions";
+import { getExperienceAction, getSimilarProfilesAction } from "../redux/actions";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import FooterComponent from "./FooterComponent";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+
+  const profile = useSelector(state => state.profile.content);
 
   useEffect(() => {
     dispatch(getSimilarProfilesAction());
@@ -18,6 +21,7 @@ const ProfilePage = () => {
         <MainProfile />
         <AsideProfile />
       </Row>
+      <FooterComponent />
     </Container>
   );
 };
