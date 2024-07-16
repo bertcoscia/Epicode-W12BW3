@@ -117,3 +117,12 @@ nav {
     display: none !important;
   }
 }
+
+#footer p {
+  font-size: 15px;
+  color: #6c6b69;
+  font-weight: 600;
+}
+.iconFooter {
+  margin-left: 90px;
+}
