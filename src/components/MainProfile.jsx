@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Button, Image, Col, Modal } from "react-bootstrap";
+import { Button, Image, Col, Modal, Form, Alert } from "react-bootstrap";
 import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-
 import Experience from "./Experience";
 
 function MainProfile() {
@@ -55,7 +54,7 @@ function MainProfile() {
             <div className="mt-5 ms-3">
               <h2>{`${profile.name} ${profile.surname}`}</h2>
               <p className="mb-2 text-dark-emphasis">{profile.title}</p>
-              <p className="text-muted">
+              <p>
                 {profile.area} ·
                 <span
                   className="ms-1 text-primary text-decoration-none"
