@@ -71,7 +71,7 @@ function FooterComponent() {
             }
           >
             <Dropdown.Item eventKey="1">Italian</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+            <Dropdown.Item eventKey="2">Spanish</Dropdown.Item>
             <Dropdown.Item eventKey="3" active>
               Active Item
             </Dropdown.Item>
