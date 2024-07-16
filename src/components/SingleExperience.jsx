@@ -29,7 +29,10 @@ const SingleExperience = ({ experience }) => {
   };
 
   const startMonth = experience.startDate.substring(5, 7);
-  const endMonth = experience.endDate.substring(5, 7);
+  let endMonth;
+  if (experience.endDate) {
+    endMonth = experience.endDate.substring(5, 7);
+  }
 
   return (
     <div className="d-flex border-0 pb-2 my-2 border border-bottom">
@@ -42,7 +45,7 @@ const SingleExperience = ({ experience }) => {
         <p className="mb-0 text-muted">
           {monthName(startMonth)}
           {experience.startDate.substring(0, 4)} - {monthName(endMonth)}
-          {experience.endDate.substring(0, 4)}
+          {experience.endDate && experience.endDate.substring(0, 4)}
         </p>
         <p className="text-muted">{experience.area}</p>
         <p className="pt-0">{experience.description}</p>
