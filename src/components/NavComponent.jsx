@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Form, InputGroup, NavDropdown } from "react-bootstrap";
+import { Button, Form, InputGroup, NavDropdown, NavLink } from "react-bootstrap";
 import { Search, ThreeDots } from "react-bootstrap-icons";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -76,12 +76,50 @@ function NavComponent() {
                 <small className="d-none d-lg-block">Me</small>
               </div>
             }
+            drop="start"
           >
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown.Item>
+              <NavLink to="/">
+                <div className="d-flex flex-column border-bottom">
+                  <div className="d-flex">
+                    <img src={profile && profile.image} alt="" style={{ width: "48px", height: "48px" }} className="rounded-circle me-3" />
+                    <div>
+                      <h6>{`${profile && profile.name} ${profile && profile.surname}`}</h6>
+                      <small className="line-clamp-1">{profile && profile.title}</small>
+                    </div>
+                  </div>
+                  <Button variant="outline-primary" className="rounded-pill px-lg-3 py-0 w-100 my-3">
+                    View profile
+                  </Button>
+                </div>
+              </NavLink>
+            </NavDropdown.Item>
+            <div className="mx-3 border-bottom mb-3">
+              <h5>Account</h5>
+              <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                Settings & Privacy
+              </p>
+              <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                Help
+              </p>
+              <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                Language
+              </p>
+            </div>
+            <div className="mx-3 border-bottom mb-3">
+              <h5>Manage</h5>
+              <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                Posts & Activity
+              </p>
+              <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                Job Posting Account
+              </p>
+            </div>
+            <div className="mx-3">
+              <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                Sign Out
+              </p>
+            </div>
           </NavDropdown>
 
           <NavDropdown
@@ -110,11 +148,48 @@ function NavComponent() {
               drop="down"
               className="xs-profile-dropdown"
             >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              <NavDropdown.Item>
+                <NavLink to="/">
+                  <div className="d-flex flex-column border-bottom">
+                    <div className="d-flex">
+                      <img src={profile && profile.image} alt="" style={{ width: "48px", height: "48px" }} className="rounded-circle me-3" />
+                      <div>
+                        <h6>{`${profile && profile.name} ${profile && profile.surname}`}</h6>
+                        <small className="line-clamp-1">{profile && profile.title}</small>
+                      </div>
+                    </div>
+                    <Button variant="outline-primary" className="rounded-pill px-lg-3 py-0 w-100 my-3">
+                      View profile
+                    </Button>
+                  </div>
+                </NavLink>
+              </NavDropdown.Item>
+              <div className="mx-3 border-bottom mb-3">
+                <h5>Account</h5>
+                <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                  Settings & Privacy
+                </p>
+                <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                  Help
+                </p>
+                <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                  Language
+                </p>
+              </div>
+              <div className="mx-3 border-bottom mb-3">
+                <h5>Manage</h5>
+                <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                  Posts & Activity
+                </p>
+                <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                  Job Posting Account
+                </p>
+              </div>
+              <div className="mx-3">
+                <p style={{ cursor: "pointer" }} className="dropdown-link text-secondary">
+                  Sign Out
+                </p>
+              </div>
             </NavDropdown>
 
             <NavDropdown

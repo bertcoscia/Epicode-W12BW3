@@ -43,6 +43,13 @@ nav {
   overflow: hidden;
 }
 
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .btn-primary {
   background-color: #0966c2 !important;
   &:hover {
@@ -66,6 +73,11 @@ nav {
 .activity-btn:focus {
   background-color: #024c33 !important;
   color: #ffffff !important;
+}
+
+.dropdown-link:hover {
+  color: #000000 !important;
+  text-decoration: underline;
 }
 
 @media screen and (max-widht: 991px) {
