@@ -7,6 +7,7 @@ import { Container, Row } from "react-bootstrap";
 import AsideProfile from "./components/AsideProfile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfilePage from "./components/ProfilePage";
+import HomeComponent from "./components/HomeComponent";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ProfilePage />} />
+          <Route path="/home" element={<HomeComponent />} />
         </Routes>
       </BrowserRouter>
     </>
