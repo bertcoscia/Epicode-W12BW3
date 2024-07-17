@@ -5,6 +5,7 @@ import { getSimilarProfilesAction } from "../redux/actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import FooterComponent from "./FooterComponent";
+import Prova from "./Prova";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,17 @@ const ProfilePage = () => {
 
   return (
     <Container style={{ marginTop: "110px" }}>
-      <Row>
-        <MainProfile />
-        <AsideProfile />
-      </Row>
-      <FooterComponent />
+      <Prova />
     </Container>
   );
 };
 
 export default ProfilePage;
+
+{
+  /* <Row>
+        <MainProfile />
+        <AsideProfile />
+      </Row>
+      <FooterComponent /> */
+}
