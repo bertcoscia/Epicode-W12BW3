@@ -6,7 +6,7 @@ const HomeMain = () => {
   const posts = useSelector(state => state.posts.content);
 
   return (
-    <div>
+    <div style={{ width: "45%" }}>
       <NewPost />
       <hr />
       {posts.length > 0 && posts.slice(-5).map(post => <SinglePost key={post._id} post={post} />)}

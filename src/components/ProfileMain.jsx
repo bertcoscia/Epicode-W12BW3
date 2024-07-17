@@ -4,7 +4,7 @@ import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Experience from "./Experience";
 
-function MainProfile() {
+function ProfileMain() {
   const profile = useSelector(state => state.profile.content);
 
   const connectionsNumber = Math.floor(Math.random() * 500) + 1;
@@ -299,4 +299,4 @@ function MainProfile() {
   );
 }
 
-export default MainProfile;
+export default ProfileMain;

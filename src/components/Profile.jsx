@@ -1,12 +1,12 @@
 import { Container, Row } from "react-bootstrap";
-import MainProfile from "./MainProfile";
-import AsideProfile from "./AsideProfile";
 import { getSimilarProfilesAction } from "../redux/actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import FooterComponent from "./FooterComponent";
+import ProfileRightAside from "./ProfileRightAside";
+import ProfileMain from "./ProfileMain";
 
-const ProfilePage = () => {
+const Profile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,14 +17,12 @@ const ProfilePage = () => {
   return (
     <Container style={{ marginTop: "110px" }}>
       <Row>
-        <MainProfile />
-        <AsideProfile />
+        <ProfileMain />
+        <ProfileRightAside />
       </Row>
       <FooterComponent />
     </Container>
   );
 };
 
-export default ProfilePage;
-
-/*  */
+export default Profile;

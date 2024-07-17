@@ -1,12 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./HomeComponent.css";
-
-import MainProfile from "./components/MainProfile";
 import NavComponent from "./components/NavComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProfilePage from "./components/ProfilePage";
-import HomeComponent from "./components/HomeComponent";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -14,8 +12,8 @@ function App() {
       <NavComponent />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ProfilePage />} />
-          <Route path="/home" element={<HomeComponent />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -11,6 +11,7 @@ const NewPost = () => {
   const [newPost, setNewPost] = useState({ text: "" });
   const [show, setShow] = useState(false);
   const [img, setImg] = useState(null);
+  const [postId, setPostId] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -36,10 +37,11 @@ const NewPost = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+        /* setPostId(responseData._id); */
         const postPicResp = await fetchPostPic(responseData._id, img);
-        if (postPicResp.ok) {
-          dispatch(getPostsAction());
-        }
+
+        dispatch(getPostsAction());
+
         return responseData._id;
       } else {
         throw new Error("Couldn't send data - @postNewPost");
@@ -74,10 +76,14 @@ const NewPost = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    postNewPost(newPost);
+    /* const id = await  */ postNewPost(newPost);
+    /* if (img) {
+      await fetchPostPic(id, img);
+    } */
     setNewPost({ text: "" });
     setImg(null);
     setShow(false);
+    /* dispatch(getPostsAction()); */
   };
 
   return (
