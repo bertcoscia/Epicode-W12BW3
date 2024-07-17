@@ -20,7 +20,7 @@ const HomeLeftAside = () => {
     <div style={{ flexShrink: "0", flexBasis: "225px" }} className="d-none d-lg-block">
       <div className="bg-white rounded card">
         <div className="position-relative mb-4">
-          <img src={randomHeroImage} alt="background" className="object-fit-cover img-fluid  rounded-top" style={{ height: "90px", width: "100%" }} />
+          <img src={randomHeroImage} alt="background" className="object-fit-cover img-fluid  rounded-top" style={{ height: "55px", width: "100%" }} />
           <Link to={"/profile"}>
             <img src={profile.image} alt="propic" className="rounded-circle border position-absolute top-100 start-50 translate-middle" style={{ height: "64px", width: "64px" }} />
           </Link>
