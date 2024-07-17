@@ -80,6 +80,10 @@ nav {
   text-decoration: underline;
 }
 
+.newpost-btn:hover {
+  background-color: #f3f3f3 !important;
+}
+
 @media screen and (max-widht: 991px) {
   .nav-small {
     display: none !important;

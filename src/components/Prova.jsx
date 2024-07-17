@@ -7,7 +7,7 @@ const Prova = () => {
   const profile = useSelector(state => state.profile.content);
   const [img, setImg] = useState(null);
 
-  const handleChange = event => {
+  const handleChangePic = event => {
     setImg(event.target.files[0]);
   };
 
@@ -44,7 +44,7 @@ const Prova = () => {
   return (
     <Form style={{ marginTop: "150px", width: "50%", marginInline: "auto" }} onSubmit={handleSubmit}>
       <InputGroup>
-        <FormControl type="file" accept="img/*" placeholder="Upload a picture" onChange={handleChange} />
+        <FormControl type="file" accept="img/*" placeholder="Upload a picture" onChange={handleChangePic} />
         <Button type="submit">Upload</Button>
       </InputGroup>
     </Form>

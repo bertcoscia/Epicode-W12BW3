@@ -3,12 +3,16 @@ import SingleExperience from "./SingleExperience";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
-import { getExperienceAction } from "../redux/actions";
+import { auth, getExperienceAction } from "../redux/actions";
 
 const Experience = ({ id }) => {
   const dispatch = useDispatch();
   const experience = useSelector(state => state.experience.content);
-  const auth = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njk0ZGNkOTE5NmQ3YjAwMTVkNmI1MmEiLCJpYXQiOjE3MjEwMzE4OTcsImV4cCI6MTcyMjI0MTQ5N30.AOy5Mx1Ft4QVbhAVCIHUeNKEUmMKeOkHf2Cu_A4Q_Fc";
+
+  const [img, setImg] = useState(null);
+  const handleChangePic = event => {
+    setImg(event.target.files[0]);
+  };
 
   const [newExperience, setNewExperience] = useState({
     role: "",

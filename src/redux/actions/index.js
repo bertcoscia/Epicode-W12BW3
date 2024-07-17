@@ -2,6 +2,7 @@ export const GET_PROFILE = "GET_PROFILE";
 export const GET_SIMILAR_PROFILES = "GET_SIMILAR_PROFILES";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const POST_EXPERIENCE = "POST_EXPERIENCE";
+export const GET_POSTS = "GET_POSTS";
 
 const urlPersonalProfile = "https://striveschool-api.herokuapp.com/api/profile/me";
 const urlProfiles = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -26,7 +27,8 @@ export const getProfileAction = () => {
           type: GET_PROFILE,
           payload: profile
         });
-      });
+      })
+      .catch(error => console.log(error));
   };
 };
 
@@ -49,7 +51,8 @@ export const getSimilarProfilesAction = () => {
           type: GET_SIMILAR_PROFILES,
           payload: profilesArray
         });
-      });
+      })
+      .catch(error => console.log(error));
   };
 };
 
@@ -72,6 +75,31 @@ export const getExperienceAction = id => {
           type: GET_EXPERIENCE,
           payload: experiences
         });
-      });
+      })
+      .catch(error => console.log(error));
+  };
+};
+
+export const getPostsAction = () => {
+  return dispatch => {
+    fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+      headers: {
+        Authorization: auth
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Couldn't get data - @getPostsAction");
+        }
+      })
+      .then(posts => {
+        dispatch({
+          type: GET_POSTS,
+          payload: posts
+        });
+      })
+      .catch(error => console.log(error));
   };
 };
