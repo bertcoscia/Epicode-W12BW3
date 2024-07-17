@@ -14,7 +14,27 @@ const HomeComponent = () => {
     heroImages[Math.floor(Math.random() * heroImages.length)];
 
   return (
-    <Container>
+    <div id="cardProfileHome">
+      <div className="text-center">
+        <img id="aaa" src={randomHeroImage} alt="background image" />
+        <div>
+          <img
+            className="rounded-circle profilePic"
+            src={randomHeroImage}
+            alt="profile picture"
+          />
+        </div>
+        <div className="pt-4">
+          <h3>Nome Profilo</h3>
+          <p>Aspirant Full Stack Web Developer</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HomeComponent;
+/*  <Container>
       <Row>
         <Col sm={3} style={{ marginTop: "110px" }}>
           <div className="bg-white rounded-5">
@@ -122,8 +142,4 @@ const HomeComponent = () => {
           </div>
         </Col>
       </Row>
-    </Container>
-  );
-};
-
-export default HomeComponent;
+    </Container> */

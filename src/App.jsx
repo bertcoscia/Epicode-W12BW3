@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./HomeComponent.css";
 
 import MainProfile from "./components/MainProfile";
 import NavComponent from "./components/NavComponent";
