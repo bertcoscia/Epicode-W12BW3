@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import { BookmarkFill, Plus } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const HomeLeftAside = () => {
   const profile = useSelector(state => state.profile.content);
@@ -16,14 +17,15 @@ const HomeLeftAside = () => {
   const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
 
   return (
-    <div style={{ flexShrink: "0", flexBasis: "225px" }}>
-      <div className="bg-white rounded">
-        <div className="text-center">
+    <div style={{ flexShrink: "0", flexBasis: "225px" }} className="d-none d-lg-block">
+      <div className="bg-white rounded card">
+        <div className="position-relative mb-4">
           <img src={randomHeroImage} alt="background" className="object-fit-cover img-fluid  rounded-top" style={{ height: "90px", width: "100%" }} />
+          <Link to={"/profile"}>
+            <img src={profile.image} alt="propic" className="rounded-circle border position-absolute top-100 start-50 translate-middle" style={{ height: "64px", width: "64px" }} />
+          </Link>
         </div>
-        <div className="text-center mt-2 ">
-          <img src={profile.image} alt="propic" className="rounded-circle border" style={{ height: "64px", width: "64px" }} />
-        </div>
+        <div className="text-center mt-4 "></div>
         <h5 className="text-center">{`${profile.name} ${profile.surname}`}</h5>
         <p className="text-center fs-6 text-muted">{profile.title}</p>
         <hr />
@@ -39,7 +41,7 @@ const HomeLeftAside = () => {
         <div className="border-bottom px-3 mb-3">
           <small className="text-muted">Achieve your career goals</small>
           <div className="d-flex align-items-center mt-2 mb-3 column-gap-2">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKuc65pxs9sVwWpeqGHMggoyexEdNj34y7Ug&s" alt="chip orange" style={{ width: "20px", height: "20px" }} />
+            <img src="https://media.licdn.com/dms/image/D5610AQG472GRwcHZJQ/image-shrink_1280/0/1710175969658?e=1721487600&v=beta&t=_IDwzQpFquuMqdVVE-0VidnGrXVqBJP92q4O7zpmkYw" alt="chip orange" style={{ width: "20px", height: "20px" }} />
             <small>Try Premium for €0</small>
           </div>
         </div>
@@ -47,12 +49,12 @@ const HomeLeftAside = () => {
         <div className="d-flex px-3 pb-3 align-items-center column-gap-2">
           <BookmarkFill />
           <strong>
-            <small>Elementi salvati</small>
+            <small>Saved elements</small>
           </strong>
         </div>
       </div>
 
-      <div className="bg-white rounded my-2 p-3">
+      <div className="bg-white rounded my-2 p-3 card">
         <a href="#home" className="text-decoration-none home-left-aside-link">
           <small>Groups</small>
         </a>

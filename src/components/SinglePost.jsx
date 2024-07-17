@@ -17,7 +17,7 @@ const SinglePost = ({ post }) => {
             {post.user._id === profile._id && <Pencil className="ms-auto" width={16} height={16} style={{ cursor: "pointer" }} />}
           </div>
           <p className="my-3">{post.text}</p>
-          {post.image && <img src={post.image} alt="img post" className="img-post" />}
+          {post.image && <img src={post.image} alt="img post" className="img-post img-fluid" />}
         </div>
       )}
     </>

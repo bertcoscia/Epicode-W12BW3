@@ -9,8 +9,8 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <>
-      <NavComponent />
       <BrowserRouter>
+        <NavComponent />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />

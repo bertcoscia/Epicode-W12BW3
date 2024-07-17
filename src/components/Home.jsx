@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Container style={{ marginTop: "110px" }} className="d-flex column-gap-4">
+    <Container style={{ marginTop: "110px" }} className="d-flex home-flex-container">
       {profile && (
         <>
           <HomeLeftAside />

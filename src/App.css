@@ -88,6 +88,18 @@ nav {
   text-decoration: underline;
 }
 
+.home-footer-link:hover {
+  color: #005a9c !important;
+  text-decoration: underline !important;
+}
+
+@media screen and (max-width: 767px) {
+  .home-main {
+    width: 95%;
+    margin-inline: auto;
+  }
+}
+
 @media screen and (max-widht: 991px) {
   .nav-small {
     display: none !important;
@@ -107,6 +119,14 @@ nav {
 
   .similar-profile {
     border-bottom: none !important;
+  }
+
+  .home-main {
+    width: 45%;
+  }
+
+  .home-flex-container {
+    column-gap: 0.5rem;
   }
 }
 
