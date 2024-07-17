@@ -1,4 +1,9 @@
+import { Pencil } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
+
 const SinglePost = ({ post }) => {
+  const profile = useSelector(state => state.profile.content);
+
   return (
     <>
       {post.user.name !== undefined && (
@@ -9,6 +14,7 @@ const SinglePost = ({ post }) => {
               <h6 className="mb-0">{`${post.user.name} ${post.user.surname}`}</h6>
               <small className="text-muted">{post.user.title}</small>
             </div>
+            {post.user._id === profile._id && <Pencil className="ms-auto" width={16} height={16} style={{ cursor: "pointer" }} />}
           </div>
           <p className="my-3">{post.text}</p>
           {post.image && <img src={post.image} alt="img post" className="img-post" />}

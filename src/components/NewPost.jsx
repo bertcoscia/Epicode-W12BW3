@@ -1,19 +1,83 @@
 import { useState } from "react";
 import { Button, Form, FormControl, InputGroup, Modal } from "react-bootstrap";
-import { Calendar3, CardText, Image } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
+import { Calendar3, CardText, EmojiSmile, Exclamation, Image, Plus, Stars } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { auth, getPostsAction } from "../redux/actions";
 
 const NewPost = () => {
   const profile = useSelector(state => state.profile.content);
+  const dispatch = useDispatch();
 
-  const [post, setPost] = useState("");
+  const [newPost, setNewPost] = useState({ text: "" });
   const [show, setShow] = useState(false);
+  const [img, setImg] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleChange = event => {
-    setPost(event.target.value);
+    setNewPost({ text: event.target.value });
+  };
+
+  const handleChangePic = event => {
+    setImg(event.target.files[0]);
+  };
+
+  const postNewPost = async post => {
+    try {
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+        method: "POST",
+        headers: {
+          Authorization: auth,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(post)
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        const postPicResp = await fetchPostPic(responseData._id, img);
+        if (postPicResp.ok) {
+          dispatch(getPostsAction());
+        }
+        return responseData._id;
+      } else {
+        throw new Error("Couldn't send data - @postNewPost");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchPostPic = async (postId, file) => {
+    const formData = new FormData();
+    formData.append("post", file);
+
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "POST",
+        headers: {
+          Authorization: auth
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        return await response.json();
+      } else {
+        throw new Error("Couldn't send data - @fetchPostPic @NewPost.jsx");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    postNewPost(newPost);
+    setNewPost({ text: "" });
+    setImg(null);
+    setShow(false);
   };
 
   return (
@@ -34,28 +98,50 @@ const NewPost = () => {
             </div>
           </Modal.Header>
           <Modal.Body>
-            <Form>
-              <InputGroup>
-                <FormControl as="textarea" placeholder="What do you want to talk about?" onChange={handleChange} className="border-0 mb-3" />
+            <Form className="mt-3" onSubmit={handleSubmit}>
+              <InputGroup className="mb-3">
+                <FormControl required as="textarea" placeholder="What do you want to talk about?" onChange={handleChange} className="border-0 w-100" style={{ height: "150px" }} />
+                <FormControl type="file" accept="img/*" onChange={handleChangePic} className="my-3" />
               </InputGroup>
-              <Button type="submit">Upload</Button>
+              <EmojiSmile width={24} height={24} style={{ cursor: "pointer" }} className="mb-3" />
+              <div className="d-flex me-auto">
+                <Button variant="light" className="px-3 py-1 rounded-pill border border-dark-subtle me-3">
+                  <Stars width={16} height={16} fill="#c37d16" className="me-2" />
+                  <small>Rewrite with AI</small>
+                </Button>
+                <Button variant="light" type="button" className="bg-transparent border-0 py-2 rounded px-1">
+                  <Image width={24} height={24} fill="currentColor" className="me-2" />
+                </Button>
+                <Button variant="light" type="button" className="bg-transparent border-0 py-2 rounded px-1">
+                  <Calendar3 width={24} height={24} fill="currentColor" className="me-2" />
+                </Button>
+                <Button variant="light" type="button" className="bg-transparent border-0 py-2 rounded px-1">
+                  <Exclamation width={24} height={24} fill="currentColor" className="me-2" />
+                </Button>
+                <Button variant="light" type="button" className="bg-transparent border-0 py-2 rounded px-1">
+                  <Plus width={24} height={24} fill="currentColor" className="me-2" />
+                </Button>
+              </div>
+              <Button type="submit" variant="light" className="px-4 py-1 rounded-pill border border-dark-subtle mt-3 mb-2">
+                Post
+              </Button>
             </Form>
           </Modal.Body>
         </Modal>
       </div>
       <div className="d-flex align-items-center justify-content-between mb-3">
-        <button type="button" className="bg-transparent border-0 d-flex newpost-btn py-2 rounded px-1">
+        <Button variant="light" type="button" className="bg-transparent border-0 d-flex newpost-btn py-2 rounded px-1">
           <Image width={24} height={24} fill="#378FE9" className="me-2" />
           <span>Media</span>
-        </button>
-        <button type="button" className="bg-transparent border-0 d-flex newpost-btn py-2 rounded px-1">
+        </Button>
+        <Button variant="light" type="button" className="bg-transparent border-0 d-flex newpost-btn py-2 rounded px-1">
           <Calendar3 width={24} height={24} fill="#C37D16" className="me-2" />
           <span>Event</span>
-        </button>
-        <button type="button" className="bg-transparent border-0 d-flex newpost-btn py-2 rounded px-1">
+        </Button>
+        <Button variant="light" type="button" className="bg-transparent border-0 d-flex newpost-btn py-2 rounded px-1">
           <CardText width={24} height={24} fill="#E06846" className="me-2" />
           <span>Write article</span>
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const HomeMain = () => {
     <div>
       <NewPost />
       <hr />
-      {posts.length > 0 && posts.map(post => <SinglePost key={post._id} post={post} />)}
+      {posts.length > 0 && posts.slice(-5).map(post => <SinglePost key={post._id} post={post} />)}
     </div>
   );
 };
