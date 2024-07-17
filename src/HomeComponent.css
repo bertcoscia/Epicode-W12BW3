@@ -1,0 +1,14 @@
+#cardProfileHome {
+  margin-top: 110px;
+  width: 300px;
+}
+.profilePic {
+  width: 100px;
+  height: 100px;
+  border: 3px solid white;
+  margin-top: -50px;
+}
+#aaa {
+  height: 90px;
+  width: 100%;
+}
