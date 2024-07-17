@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button, Image, Col, Modal } from "react-bootstrap";
-import { Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
+import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-
 import Experience from "./Experience";
 
 function MainProfile() {
@@ -41,7 +40,7 @@ function MainProfile() {
             <div className="mt-5 ms-3">
               <h2>{`${profile.name} ${profile.surname}`}</h2>
               <p className="mb-2 text-dark-emphasis">{profile.title}</p>
-              <p className="text-muted">
+              <p>
                 {profile.area} ·
                 <span className="ms-1 text-primary text-decoration-none" onClick={handleShow} style={{ cursor: "pointer" }}>
                   Contact info
@@ -89,8 +88,8 @@ function MainProfile() {
             <p className="my-3">{profile.bio}</p>
           </div>
 
-          <div id="activity" className="card bg-white py-4 px-3 rounded mb-2">
-            <div className="d-flex justify-content-between">
+          <div id="activity" className="card bg-white pt-4 px-3 rounded mb-2">
+            <div className="d-flex justify-content-between mb-3">
               <h3>Activity</h3>
               <div className="d-flex justify-content-between align-items-center">
                 <Button variant="outline-primary" className="rounded-pill px-3 align-self-center me-3">
@@ -119,13 +118,15 @@ function MainProfile() {
               />
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, cum modi aspernatur impedit perspiciatis nam rem laudantium a ut. Voluptas molestiae ea soluta ad exercitationem eligendi, culpa ducimus saepe pariatur.
             </div>
-            <div className="fs-5 fw-bold text-center py-2">Show All Posts</div>
+            <h2 className="fs-5 text-center py-2">
+              Show all posts <ArrowRight />
+            </h2>
           </div>
 
           {profile && <Experience id={profile._id} />}
 
           <div id="education" className="card bg-white pt-4 px-3 rounded mb-2">
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mb-3">
               <h3>Education</h3>
               <div className="d-flex">
                 <PlusLg className="me-3" />
@@ -240,6 +241,57 @@ function MainProfile() {
                 />
               </div>
             </div>
+          </div>
+
+          {/* NUOVE SEZIONI */}
+          <div className="bg-white pt-4 px-3 rounded mb-2">
+            <div className="d-flex justify-content-between mb-3">
+              <h1 className="fs-3 ps-2">Skills</h1>
+              <div className="d-flex pe-3">
+                <PlusLg className="me-3" /> <Pencil />
+              </div>
+            </div>
+            <div className="ps-2">
+              <article className="border-bottom mb-3">
+                <h1 className="fs-4">React</h1>
+                <div className="d-flex">
+                  <img className="me-3" height={"25px"} width={"25px"} src="https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg" alt="Logo Epicode" />
+                  <p>EPICODE</p>
+                </div>
+              </article>
+              <article className="border-bottom mb-3">
+                <h1 className="fs-4">SASS</h1>
+                <div className="d-flex">
+                  <img className="me-3" height={"25px"} width={"25px"} src="https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg" alt="Logo Epicode" />
+                  <p>EPICODE</p>
+                </div>
+              </article>
+              <h2 className="fs-5 text-center pb-3">
+                Show all 23 skills <ArrowRight />
+              </h2>
+            </div>
+          </div>
+
+          <div className="bg-white pt-4 px-3 rounded mb-2">
+            <div className="d-flex justify-content-between mb-3">
+              <h1 className="fs-3 ps-2">Languages</h1>
+              <div className="d-flex pe-3">
+                <PlusLg className="me-3" /> <Pencil />
+              </div>
+            </div>
+            <div className="ps-2">
+              <div className="border-bottom">
+                <h3 className="fs-4">English</h3>
+                <p>Full professional proficiency</p>
+              </div>
+              <div className="border-bottom pt-3">
+                <h3 className="fs-4">French</h3>
+                <p>Full professional proficiency</p>
+              </div>
+            </div>
+            <h2 className="fs-5 text-center py-3">
+              Show all 5 languages <ArrowRight />
+            </h2>
           </div>
         </Col>
       )}

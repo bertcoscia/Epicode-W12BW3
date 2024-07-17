@@ -1,6 +1,7 @@
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_SIMILAR_PROFILES = "GET_SIMILAR_PROFILES";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
+export const POST_EXPERIENCE = "POST_EXPERIENCE";
 
 const urlPersonalProfile = "https://striveschool-api.herokuapp.com/api/profile/me";
 const urlProfiles = "https://striveschool-api.herokuapp.com/api/profile/";
