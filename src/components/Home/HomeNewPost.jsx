@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Form, FormControl, InputGroup, Modal } from "react-bootstrap";
 import { Calendar3, CardText, EmojiSmile, Exclamation, Image, Plus, Stars } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, getPostsAction } from "../redux/actions";
+import { auth, getPostsAction } from "../../redux/actions";
 
 const HomeNewPost = () => {
   const profile = useSelector(state => state.profile.content);

@@ -3,8 +3,9 @@ import "./App.css";
 import "./HomeComponent.css";
 import NavComponent from "./components/NavComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
+
+import Home from "./components/Home/Home";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (

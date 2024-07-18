@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Image, Col, Modal, Form, InputGroup, FormControl } from "react-bootstrap";
 import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, getProfileAction } from "../redux/actions";
+import { auth, getProfileAction } from "../../redux/actions";
 import ProfileExperience from "./ProfileExperience";
 import ProfileActivity from "./ProfileActivity";
 

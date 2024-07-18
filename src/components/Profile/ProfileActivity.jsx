@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { ArrowRight, Pencil } from "react-bootstrap-icons";
-import { getPostsAction } from "../redux/actions";
+import { getPostsAction } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import SinglePost from "./SinglePost";
+import SinglePost from "../SinglePost";
 
 const ProfileActivity = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { Card, Col } from "react-bootstrap";
 import { Pencil } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import SingleSimilarProfile from "./SingleSimilarProfile";
+import SingleSimilarProfile from "../SingleSimilarProfile";
 
 const ProfileRightAside = () => {
   const similarProfiles = useSelector(state => state.similarProfiles.content);

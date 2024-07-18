@@ -1,9 +1,9 @@
 import { PlusLg } from "react-bootstrap-icons";
-import SingleExperience from "./SingleExperience";
+import SingleExperience from "../SingleExperience";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
-import { auth, getExperienceAction } from "../redux/actions";
+import { auth, getExperienceAction } from "../../redux/actions";
 
 const ProfileExperience = ({ id }) => {
   const dispatch = useDispatch();

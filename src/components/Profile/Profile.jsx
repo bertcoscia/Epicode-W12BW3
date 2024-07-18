@@ -1,8 +1,8 @@
 import { Container, Row } from "react-bootstrap";
-import { getSimilarProfilesAction } from "../redux/actions";
+import { getSimilarProfilesAction } from "../../redux/actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import FooterComponent from "./FooterComponent";
+import FooterComponent from "../FooterComponent";
 import ProfileRightAside from "./ProfileRightAside";
 import ProfileMain from "./ProfileMain";
 
