@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:search_query?" element={<Jobs />} />
           <Route path="/company/:company_name" element={<Company />} />
         </Routes>
       </BrowserRouter>
