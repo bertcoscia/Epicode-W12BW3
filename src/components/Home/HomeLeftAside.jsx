@@ -17,7 +17,7 @@ const HomeLeftAside = () => {
   const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
 
   return (
-    <div style={{ flexShrink: "0", flexBasis: "225px" }} className="d-none d-lg-block">
+    <aside style={{ flexShrink: "0", flexBasis: "225px" }} className="d-none d-lg-block">
       <div className="bg-white rounded card">
         <div className="position-relative mb-4">
           <img src={randomHeroImage} alt="background" className="object-fit-cover img-fluid  rounded-top" style={{ height: "55px", width: "100%" }} />
@@ -74,7 +74,7 @@ const HomeLeftAside = () => {
           </strong>
         </Button>
       </div>
-    </div>
+    </aside>
   );
 };
 

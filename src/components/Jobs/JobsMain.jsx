@@ -1,36 +1,16 @@
+import JobsDefault from "./JobsDefault";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getJobsAction } from "../../redux/actions";
+import JobsSearchResult from "./JobsSearchResult";
 
 const JobsMain = () => {
-  const jobs = useSelector(state => state.jobs.content);
-  const dispatch = useDispatch();
-
-  const jobsCategories = ["All others", "Data", "Finance / Legal", "Product", "Marketing", "Customer Service", "Software Development", "DevOps / Sysadmin", "Human Resources", "Writing", "Sales", "Design", "Business", "QA", "Teaching"];
-
-  const randomCategory1 = jobsCategories[Math.floor(Math.random() * jobsCategories.length)];
-  const randomCategory2 = jobsCategories[Math.floor(Math.random() * jobsCategories.length)];
-  const randomCategory3 = jobsCategories[Math.floor(Math.random() * jobsCategories.length)];
+  const params = useParams();
 
   useEffect(() => {
-    dispatch(getJobsAction());
-    console.log(randomCategory1);
-    console.log(randomCategory2);
-    console.log(randomCategory3);
+    console.log(params);
   }, []);
 
-  return (
-    <div className="home-main">
-      <div className="card p-3 mb-2">
-        <h1 className="h3">Find open jobs</h1>
-        <small className="text-muted">Find relevant jobs for you</small>
-      </div>
-      <div className="card p-3 mb-2">
-        <h1 className="h3">Find open jobs</h1>
-        <small className="text-muted">Find relevant jobs for you</small>
-      </div>
-    </div>
-  );
+  return <main>{params.search_query ? <JobsSearchResult search_query={params.search_query} /> : <JobsDefault />}</main>;
 };
 
 export default JobsMain;

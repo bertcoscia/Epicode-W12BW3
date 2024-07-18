@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, InputGroup, NavDropdown, NavLink } from "react-bootstrap";
 import { Search, ThreeDots } from "react-bootstrap-icons";
 import Container from "react-bootstrap/Container";
@@ -6,11 +6,24 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavComponent() {
   const profile = useSelector(state => state.profile.content);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleChange = event => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    navigate(`/jobs/${searchQuery}`);
+    setSearchQuery("");
+  };
 
   useEffect(() => {
     dispatch(getProfileAction());
@@ -27,12 +40,12 @@ function NavComponent() {
             </svg>
           </Nav.Link>
         </Navbar.Brand>
-        <Form inline="true" className="nav-search">
+        <Form inline="true" className="nav-search" onSubmit={handleSubmit}>
           <InputGroup>
             <InputGroup.Text id="search-icon" className="search-input border-end-none">
               <Search />
             </InputGroup.Text>
-            <Form.Control type="text" placeholder="Search" className="px-2 py-2 search-input border-start-none nav-search-bar" aria-label="search" aria-describedby="search-icon" />
+            <Form.Control value={searchQuery} onChange={handleChange} type="text" placeholder="Search" className="px-2 py-2 search-input border-start-none nav-search-bar" aria-label="search" aria-describedby="search-icon" />
           </InputGroup>
         </Form>
 

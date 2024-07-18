@@ -21,7 +21,6 @@ const Prova = () => {
       }
     }
   };
-  //TODO: METTI FETCH PER INVIARE FORMDATA (METHOD: POST/NEGLI HEADERS VA SOLO AUTHENTICATION/ BODY: FORMDATA)
 
   const fetchPostPic = formData => {
     fetch(`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`, {

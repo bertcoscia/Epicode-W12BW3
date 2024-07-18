@@ -50,6 +50,13 @@ nav {
   overflow: hidden;
 }
 
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .dropdown-profile-item:active {
   background-color: transparent !important;
   color: #212529;
@@ -99,7 +106,7 @@ nav {
 }
 
 @media screen and (max-width: 767px) {
-  .home-main {
+  main {
     width: 95%;
     margin-inline: auto;
   }
@@ -126,7 +133,7 @@ nav {
     border-bottom: none !important;
   }
 
-  .home-main {
+  main {
     width: 45%;
   }
 
@@ -158,13 +165,4 @@ nav {
 }
 .iconFooter {
   margin-left: 90px;
-}
-
-/* PAGINA JOBS */
-
-.jobs-page-left-aside {
-  margin-top: 110px;
-}
-.btn-free-jobs {
-  border-width: 2px;
 }
