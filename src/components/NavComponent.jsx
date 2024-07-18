@@ -83,7 +83,6 @@ function NavComponent() {
             drop="start"
           >
             <NavDropdown.Item>
-              <Nav.Link as={Link} to={"/profile"}>
                 <div className="d-flex flex-column border-bottom">
                   <div className="d-flex">
                     <img src={profile && profile.image} alt="" style={{ width: "48px", height: "48px" }} className="rounded-circle me-3" />
@@ -92,11 +91,13 @@ function NavComponent() {
                       <small className="line-clamp-1">{profile && profile.title}</small>
                     </div>
                   </div>
+                <Nav.Link as={Link} to={"/profile"}>
                   <Button variant="outline-primary" className="rounded-pill px-lg-3 py-0 w-100 my-3">
                     View profile
                   </Button>
+                  </Nav.Link>
                 </div>
-              </Nav.Link>
+              
             </NavDropdown.Item>
             <div className="mx-3 border-bottom mb-3">
               <h5>Account</h5>
