@@ -154,3 +154,12 @@ nav {
 .iconFooter {
   margin-left: 90px;
 }
+
+/* PAGINA JOBS */
+
+.jobs-page-left-aside {
+  margin-top: 110px;
+}
+.btn-free-jobs {
+  border-width: 2px;
+}
