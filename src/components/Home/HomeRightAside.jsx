@@ -6,7 +6,7 @@ const HomeRightAside = () => {
   const profile = useSelector(state => state.profile.content);
 
   return (
-    <div style={{ flexShrink: "0", flexBasis: "300px" }} className="d-none d-lg-block">
+    <aside style={{ flexShrink: "0", flexBasis: "300px" }} className="d-none d-lg-block">
       <div className="bg-white rounded p-3 mb-2 card">
         <div className="d-flex justify-content-between">
           <h3>LinkedIn news</h3>
@@ -102,7 +102,7 @@ const HomeRightAside = () => {
         <img className="me-2" src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr" alt="" />
         <small>LinkedIn Corporation &copy; 2024</small>
       </div>
-    </div>
+    </aside>
   );
 };
 

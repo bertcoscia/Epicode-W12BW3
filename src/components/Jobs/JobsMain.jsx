@@ -20,7 +20,7 @@ const JobsMain = () => {
   }, []);
 
   return (
-    <div className="home-main">
+    <main>
       <div className="card p-3 mb-2">
         <h1 className="h3">Find open jobs</h1>
         <small className="text-muted">Find relevant jobs for you</small>
@@ -29,7 +29,7 @@ const JobsMain = () => {
         <h1 className="h3">Find open jobs</h1>
         <small className="text-muted">Find relevant jobs for you</small>
       </div>
-    </div>
+    </main>
   );
 };
 

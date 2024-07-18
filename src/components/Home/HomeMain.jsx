@@ -6,7 +6,7 @@ const HomeMain = () => {
   const posts = useSelector(state => state.posts.content);
 
   return (
-    <div className="home-main">
+    <main>
       <HomeNewPost />
       <hr />
       {posts.length > 0 &&
@@ -14,7 +14,7 @@ const HomeMain = () => {
           .slice(-30)
           .reverse()
           .map(post => <SinglePost key={post._id} post={post} />)}
-    </div>
+    </main>
   );
 };
 
