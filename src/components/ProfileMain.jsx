@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button, Image, Col, Modal } from "react-bootstrap";
+import { Button, Image, Col, Modal, Form, InputGroup, FormControl } from "react-bootstrap";
 import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Experience from "./Experience";
+import { auth, getProfileAction } from "../redux/actions";
 
 function ProfileMain() {
   const profile = useSelector(state => state.profile.content);
@@ -17,6 +18,47 @@ function ProfileMain() {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+
+  const [img, setImg] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const handleChangePic = event => {
+    setImg(event.target.files[0]);
+  };
+
+  const fetchPostPic = formData => {
+    fetch(`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`, {
+      method: "POST",
+      headers: {
+        Authorization: auth
+      },
+      body: formData
+    })
+      .then(response => {
+        if (response.ok) {
+          response.json();
+          dispatch(getProfileAction());
+        } else {
+          throw new Error("Coulnd't send data - @postPic");
+        }
+      })
+      .catch(error => console.log(error));
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("profile", img);
+    if (formData) {
+      fetchPostPic(formData);
+    }
+  };
   const heroImages = [
     "https://i.pinimg.com/originals/76/e9/23/76e9238fca30a0fc41b6f5fac75b516b.jpg",
     "https://marketplace.canva.com/EAENvp21inc/1/0/1600w/canva-simple-work-linkedin-banner-qt_TMRJF4m0.jpg",
@@ -34,8 +76,25 @@ function ProfileMain() {
           <div id="profile" className="card mb-2 rounded-3">
             <img style={{ height: "200px" }} src={randomHeroImage} alt="Background Image" className="object-fit-cover img-fluid rounded-top" />
             <div className="position-absolute" style={{ top: "100px", left: "25px" }}>
-              <Image src={profile.image} roundedCircle style={{ width: "150px", border: "5px solid white" }} />
+              <Image src={profile.image} roundedCircle style={{ width: "150px", border: "5px solid white", cursor: "pointer" }} onClick={handleShow2} />
             </div>
+
+            <Modal show={show2} onHide={handleClose2}>
+              <Modal.Header closeButton>
+                <Modal.Title>Change profile photo</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                You can upload a new profile photo
+                <Form className="mt-3" onSubmit={handleSubmit}>
+                  <InputGroup className="mb-3">
+                    <FormControl type="file" accept="img/*" onChange={handleChangePic} className="my-3" />
+                  </InputGroup>
+                  <Button type="submit" variant="primary" className="rounded-pill px-3" onClick={handleClose2}>
+                    Save Changes
+                  </Button>
+                </Form>
+              </Modal.Body>
+            </Modal>
 
             <div className="mt-5 ms-3">
               <h2>{`${profile.name} ${profile.surname}`}</h2>
