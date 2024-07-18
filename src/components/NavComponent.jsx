@@ -82,22 +82,20 @@ function NavComponent() {
             }
             drop="start"
           >
-            <NavDropdown.Item>
-                <div className="d-flex flex-column border-bottom">
-                  <div className="d-flex">
-                    <img src={profile && profile.image} alt="" style={{ width: "48px", height: "48px" }} className="rounded-circle me-3" />
-                    <div>
-                      <h6>{`${profile && profile.name} ${profile && profile.surname}`}</h6>
-                      <small className="line-clamp-1">{profile && profile.title}</small>
-                    </div>
+            <NavDropdown.Item as={Link} to={"/profile"} className="dropdown-profile-item">
+              <div className="d-flex flex-column border-bottom">
+                <div className="d-flex">
+                  <img src={profile && profile.image} alt="" style={{ width: "48px", height: "48px" }} className="rounded-circle me-3" />
+                  <div>
+                    <h6>{`${profile && profile.name} ${profile && profile.surname}`}</h6>
+                    <small className="line-clamp-1">{profile && profile.title}</small>
                   </div>
-                <Nav.Link as={Link} to={"/profile"}>
-                  <Button variant="outline-primary" className="rounded-pill px-lg-3 py-0 w-100 my-3">
-                    View profile
-                  </Button>
-                  </Nav.Link>
                 </div>
-              
+
+                <Button variant="outline-primary" className="rounded-pill px-lg-3 py-0 w-100 my-3">
+                  View profile
+                </Button>
+              </div>
             </NavDropdown.Item>
             <div className="mx-3 border-bottom mb-3">
               <h5>Account</h5>

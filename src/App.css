@@ -50,6 +50,11 @@ nav {
   overflow: hidden;
 }
 
+.dropdown-profile-item:active {
+  background-color: transparent !important;
+  color: #212529;
+}
+
 .btn-primary {
   background-color: #0966c2 !important;
   &:hover {

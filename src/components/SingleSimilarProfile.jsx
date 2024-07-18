@@ -5,7 +5,11 @@ const SingleSimilarProfile = ({ profile }) => {
   return (
     <Row className="my-3 mx-2">
       <Col xs={2} lg={3}>
-        <img src={profile.image} alt="profile pic" style={{ width: "48px", height: "48px" }} className="rounded-circle me-auto object-fit-cover" />
+        {profile.image ? (
+          <img src={profile.image && profile.image} alt="profile pic" style={{ width: "48px", height: "48px" }} className="rounded-circle me-auto object-fit-cover" />
+        ) : (
+          <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="profile pic" style={{ width: "48px", height: "48px" }} className="rounded-circle me-auto object-fit-cover" />
+        )}
       </Col>
       <Col xs={10} lg={9} className="d-flex d-lg-block border-bottom similar-profile">
         <div className="me-auto d-lg-none">
