@@ -1,11 +1,11 @@
 import { Button, Col, Row } from "react-bootstrap";
 import { SendFill } from "react-bootstrap-icons";
 
-const SimilarProfile = ({ profile }) => {
+const SingleSimilarProfile = ({ profile }) => {
   return (
     <Row className="my-3 mx-2">
       <Col xs={2} lg={3}>
-        <img src={profile.image} alt="profile pic" style={{ width: "48px", height: "48px" }} className="rounded-circle me-auto" />
+        <img src={profile.image} alt="profile pic" style={{ width: "48px", height: "48px" }} className="rounded-circle me-auto object-fit-cover" />
       </Col>
       <Col xs={10} lg={9} className="d-flex d-lg-block border-bottom similar-profile">
         <div className="me-auto d-lg-none">
@@ -23,4 +23,4 @@ const SimilarProfile = ({ profile }) => {
   );
 };
 
-export default SimilarProfile;
+export default SingleSimilarProfile;

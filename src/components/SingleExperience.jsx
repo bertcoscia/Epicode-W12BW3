@@ -1,3 +1,5 @@
+import { Pencil } from "react-bootstrap-icons";
+
 const SingleExperience = ({ experience }) => {
   const monthName = monthNumber => {
     switch (monthNumber) {
@@ -39,8 +41,11 @@ const SingleExperience = ({ experience }) => {
       <div>
         <img style={{ width: "48px", height: "48px" }} src={experience.image} alt="pic profile agency" />
       </div>
-      <div className="ms-2">
-        <h5 className="mb-0">{experience.role}</h5>
+      <div className="ms-2 w-100">
+        <div className="d-flex justify-content-between">
+          <h5 className="mb-0">{experience.role}</h5>
+          <Pencil style={{ cursor: "pointer" }} />
+        </div>
         <p className="mb-0">{experience.company}</p>
         <p className="mb-0 text-muted">
           {monthName(startMonth)}

@@ -1,11 +1,11 @@
-import { Pencil, PlusLg } from "react-bootstrap-icons";
+import { PlusLg } from "react-bootstrap-icons";
 import SingleExperience from "./SingleExperience";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import { auth, getExperienceAction } from "../redux/actions";
 
-const Experience = ({ id }) => {
+const ProfileExperience = ({ id }) => {
   const dispatch = useDispatch();
   const experience = useSelector(state => state.experience.content);
 
@@ -79,7 +79,7 @@ const Experience = ({ id }) => {
       <div className="d-flex justify-content-between mb-2">
         <h3>Experience</h3>
         <div className="d-flex">
-          <PlusLg className="me-3" onClick={handleShow2} style={{ cursor: "pointer" }} />
+          <PlusLg onClick={handleShow2} style={{ cursor: "pointer" }} />
 
           <Modal show={show2} onHide={handleClose2} size="lg">
             <Modal.Header closeButton>
@@ -177,7 +177,6 @@ const Experience = ({ id }) => {
               </Form>
             </Modal.Body>
           </Modal>
-          <Pencil />
         </div>
       </div>
       {experience.length > 0 && experience.map(item => <SingleExperience key={item._id} experience={item} />)}
@@ -185,4 +184,4 @@ const Experience = ({ id }) => {
   );
 };
 
-export default Experience;
+export default ProfileExperience;

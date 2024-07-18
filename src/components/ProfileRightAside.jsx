@@ -1,7 +1,7 @@
 import { Card, Col } from "react-bootstrap";
 import { Pencil } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import SimilarProfile from "./SimilarProfile";
+import SingleSimilarProfile from "./SingleSimilarProfile";
 
 const ProfileRightAside = () => {
   const similarProfiles = useSelector(state => state.similarProfiles.content);
@@ -45,11 +45,11 @@ const ProfileRightAside = () => {
         <h6 className="p-3">Other similar profiles</h6>
         {similarProfiles.length > 0 && (
           <>
-            <SimilarProfile profile={randomProfile5} />
-            <SimilarProfile profile={randomProfile1} />
-            <SimilarProfile profile={randomProfile2} />
-            <SimilarProfile profile={randomProfile3} />
-            <SimilarProfile profile={randomProfile4} />
+            <SingleSimilarProfile profile={randomProfile5} />
+            <SingleSimilarProfile profile={randomProfile1} />
+            <SingleSimilarProfile profile={randomProfile2} />
+            <SingleSimilarProfile profile={randomProfile3} />
+            <SingleSimilarProfile profile={randomProfile4} />
           </>
         )}
       </Card>

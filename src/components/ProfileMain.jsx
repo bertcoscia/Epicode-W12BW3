@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button, Image, Col, Modal, Form, InputGroup, FormControl } from "react-bootstrap";
 import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import Experience from "./Experience";
 import { auth, getProfileAction } from "../redux/actions";
+import ProfileExperience from "./ProfileExperience";
+import ProfileActivity from "./ProfileActivity";
 
 function ProfileMain() {
   const profile = useSelector(state => state.profile.content);
@@ -147,42 +148,9 @@ function ProfileMain() {
             <p className="my-3">{profile.bio}</p>
           </div>
 
-          <div id="activity" className="card bg-white pt-4 px-3 rounded mb-2">
-            <div className="d-flex justify-content-between mb-3">
-              <h3>Activity</h3>
-              <div className="d-flex justify-content-between align-items-center">
-                <Button variant="outline-primary" className="rounded-pill px-3 align-self-center me-3">
-                  Create a post
-                </Button>
-                <Pencil />
-              </div>
-            </div>
-            <div className="d-flex column-gap-2 my-2">
-              <Button variant="light" className="px-3 py-1 rounded-pill border border-dark-subtle activity-btn">
-                Posts
-              </Button>
-              <Button variant="light" className="px-3 py-1 rounded-pill border border-dark-subtle activity-btn">
-                Comments
-              </Button>
-              <Button variant="light" className="px-3 py-1 rounded-pill border border-dark-subtle activity-btn">
-                Images
-              </Button>
-            </div>
-            <div className="d-flex py-4 border-bottom">
-              <img
-                className="me-3 rounded"
-                style={{ width: "64px", height: "64px" }}
-                src="https://c8.alamy.com/compit/2f8dh42/nessuna-foto-o-icona-immagine-vuota-caricamento-di-immagini-o-contrassegno-immagine-mancante-immagine-non-disponibile-o-immagine-in-arrivo-segno-silhouette-naturale-semplice-nella-cornice-2f8dh42.jpg"
-                alt=""
-              />
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, cum modi aspernatur impedit perspiciatis nam rem laudantium a ut. Voluptas molestiae ea soluta ad exercitationem eligendi, culpa ducimus saepe pariatur.
-            </div>
-            <h2 className="fs-5 text-center py-2">
-              Show all posts <ArrowRight />
-            </h2>
-          </div>
+          {profile && <ProfileActivity />}
 
-          {profile && <Experience id={profile._id} />}
+          {profile && <ProfileExperience id={profile._id} />}
 
           <div id="education" className="card bg-white pt-4 px-3 rounded mb-2">
             <div className="d-flex justify-content-between mb-3">

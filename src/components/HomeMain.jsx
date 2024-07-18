@@ -1,15 +1,19 @@
 import { useSelector } from "react-redux";
-import NewPost from "./NewPost";
 import SinglePost from "./SinglePost";
+import HomeNewPost from "./HomeNewPost";
 
 const HomeMain = () => {
   const posts = useSelector(state => state.posts.content);
 
   return (
     <div className="home-main">
-      <NewPost />
+      <HomeNewPost />
       <hr />
-      {posts.length > 0 && posts.slice(-5).map(post => <SinglePost key={post._id} post={post} />)}
+      {posts.length > 0 &&
+        posts
+          .slice(-30)
+          .reverse()
+          .map(post => <SinglePost key={post._id} post={post} />)}
     </div>
   );
 };

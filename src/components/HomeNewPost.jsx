@@ -4,7 +4,7 @@ import { Calendar3, CardText, EmojiSmile, Exclamation, Image, Plus, Stars } from
 import { useDispatch, useSelector } from "react-redux";
 import { auth, getPostsAction } from "../redux/actions";
 
-const NewPost = () => {
+const HomeNewPost = () => {
   const profile = useSelector(state => state.profile.content);
   const dispatch = useDispatch();
 
@@ -153,4 +153,4 @@ const NewPost = () => {
   );
 };
 
-export default NewPost;
+export default HomeNewPost;
