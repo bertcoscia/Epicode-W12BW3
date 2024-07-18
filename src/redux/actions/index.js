@@ -124,6 +124,7 @@ export const getJobsAction = () => {
           type: GET_JOBS,
           payload: jobs.data
         });
-      });
+      })
+      .catch(error => console.log(error));
   };
 };
