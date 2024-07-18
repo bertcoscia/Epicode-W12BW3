@@ -3,6 +3,7 @@ export const GET_SIMILAR_PROFILES = "GET_SIMILAR_PROFILES";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const POST_EXPERIENCE = "POST_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
+export const GET_JOBS = "GET_JOBS";
 
 const urlPersonalProfile = "https://striveschool-api.herokuapp.com/api/profile/me";
 const urlProfiles = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -101,5 +102,28 @@ export const getPostsAction = () => {
         });
       })
       .catch(error => console.log(error));
+  };
+};
+
+export const getJobsAction = () => {
+  return dispatch => {
+    fetch("https://strive-benchmark.herokuapp.com/api/jobs", {
+      headers: {
+        Authorization: auth
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Couldn't get data - @getJobsAction");
+        }
+      })
+      .then(jobs => {
+        dispatch({
+          type: GET_JOBS,
+          payload: jobs.data
+        });
+      });
   };
 };
