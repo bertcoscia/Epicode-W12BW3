@@ -3,13 +3,15 @@ import profileReducer from "../reducers/profileReducer";
 import similarProfilesReducer from "../reducers/similarProfiles";
 import experienceReducer from "../reducers/experienceReducer";
 import postsReducer from "../reducers/postsReducer";
+import jobsReducer from "../reducers/jobsReducer";
 
 const rootReducer = combineReducers({
   // reducers vari
   profile: profileReducer,
   similarProfiles: similarProfilesReducer,
   experience: experienceReducer,
-  posts: postsReducer
+  posts: postsReducer,
+  jobs: jobsReducer
 });
 
 const store = configureStore({
