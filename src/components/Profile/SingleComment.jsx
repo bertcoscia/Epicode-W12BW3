@@ -23,7 +23,7 @@ const SingleComment = ({ comment }) => {
       <div>
         <img src="https://thispersondoesnotexist.com" alt="" style={{ height: "32px", width: "32px" }} className="rounded-circle me-3" />
       </div>
-      <div className="">
+      <div className="w-100">
         <div className="d-flex justify-content-between">
           <div>
             <h6 className="m-0">{comment.author}</h6>
@@ -35,7 +35,7 @@ const SingleComment = ({ comment }) => {
             <ThreeDots className="ms-1" />
           </small>
         </div>
-        <p className="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, quia.</p>
+        <p className="mb-3">{comment.comment}</p>
 
         <div className="d-flex">
           <p className="text-muted">Like • </p>

@@ -1,11 +1,15 @@
-import { Form, Row, Col } from "react-bootstrap";
-import { Pencil, ThreeDots } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
+import { Button, Form } from "react-bootstrap";
+import { SendFill } from "react-bootstrap-icons";
+import { Pencil } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
 import SingleComment from "./Profile/SingleComment";
+import { useState } from "react";
+import { authComments, getCommentsAction } from "../redux/actions";
 
 const SinglePost = ({ post }) => {
   const profile = useSelector(state => state.profile.content);
   const comments = useSelector(state => state.comments.content);
+  const dispatch = useDispatch();
 
   const whenPosted = createdAt => {
     const specificDate = new Date(createdAt);
@@ -22,6 +26,41 @@ const SinglePost = ({ post }) => {
     } else {
       return `${diffInMinutes}m •`;
     }
+  };
+
+  const [comment, setComment] = useState({
+    comment: "",
+    rate: "5",
+    elementId: post._id
+  });
+
+  const handleTextChange = event => {
+    setComment({ ...comment, comment: event.target.value });
+  };
+
+  const postComment = comment => {
+    fetch("https://striveschool-api.herokuapp.com/api/comments/", {
+      method: "POST",
+      headers: {
+        Authorization: authComments,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(comment)
+    })
+      .then(response => {
+        if (response.ok) {
+          dispatch(getCommentsAction());
+          return response.json();
+        } else {
+          throw new Error("Couldn't post the comment - @postComment");
+        }
+      })
+      .catch(error => console.log(error));
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    postComment(comment);
   };
 
   return (
@@ -45,10 +84,13 @@ const SinglePost = ({ post }) => {
           <p className="my-3">{post.text}</p>
           {post.image && <img src={post.image} alt="img post" className="img-post" />}
 
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="my-3 d-flex align-items-center">
               <img src={profile.image} alt="" style={{ height: "32px", width: "32px" }} className="rounded-circle me-3" />
-              <Form.Control type="text" placeholder="inserisci un commento..." className="px-4 py-2 rounded-pill border border-dark-subtle align-self-center w-100 text-start btn-light" />
+              <Form.Control type="text" placeholder="Add a comment..." className="px-4 py-2 rounded-pill border border-dark-subtle align-self-center w-100 text-start btn-light" onChange={handleTextChange} />
+              <Button variant="ligth" type="submit">
+                <SendFill />
+              </Button>
             </Form.Group>
           </Form>
           {comments.length > 0 && comments.filter(comment => comment.elementId === post._id).map(comment => <SingleComment key={comment._id} comment={comment} />)}
