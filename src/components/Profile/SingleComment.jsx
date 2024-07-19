@@ -23,17 +23,13 @@ const SingleComment = ({ comment }) => {
       <div>
         <img src="https://thispersondoesnotexist.com" alt="" style={{ height: "32px", width: "32px" }} className="rounded-circle me-3" />
       </div>
-      <div className="w-100">
+      <div style={{ width: "100%" }}>
         <div className="d-flex justify-content-between">
-          <div>
+          <div className="d-flex flex-column align-items-start">
             <h6 className="m-0">{comment.author}</h6>
             <p className="text-muted mb-2 small">TITOLO QUALUNQUE</p>
           </div>
-          <small className="d-flex align-items-center text-muted">
-            {whenPosted(comment.createdAt)}
-
-            <ThreeDots className="ms-1" />
-          </small>
+          <small className="text-muted">{whenPosted(comment.createdAt)}</small>
         </div>
         <p className="mb-3">{comment.comment}</p>
 
