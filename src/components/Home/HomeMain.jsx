@@ -3,7 +3,7 @@ import HomeNewPost from "./HomeNewPost";
 import SinglePost from "../SinglePost";
 
 const HomeMain = () => {
-  const posts = useSelector(state => state.posts.content);
+  const posts = useSelector((state) => state.posts.content);
 
   return (
     <main>
@@ -11,9 +11,9 @@ const HomeMain = () => {
       <hr />
       {posts.length > 0 &&
         posts
-          .slice(-30)
+          .slice(-100)
           .reverse()
-          .map(post => <SinglePost key={post._id} post={post} />)}
+          .map((post) => <SinglePost key={post._id} post={post} />)}
     </main>
   );
 };
