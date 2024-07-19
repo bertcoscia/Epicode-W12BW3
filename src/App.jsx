@@ -20,7 +20,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/jobs/:search_query?" element={<Jobs />} />
           <Route path="/company/:company_name" element={<Company />} />
-          <Route path="/prova" element={<Prova />} />
+          {/* <Route path="/prova" element={<Prova />} /> */}
         </Routes>
       </BrowserRouter>
     </>
