@@ -9,6 +9,7 @@ import { authComments, getCommentsAction } from "../redux/actions";
 const SinglePost = ({ post }) => {
   const profile = useSelector(state => state.profile.content);
   const comments = useSelector(state => state.comments.content);
+  const profiles = useSelector(state => state.similarProfiles.contents);
   const dispatch = useDispatch();
 
   const whenPosted = createdAt => {

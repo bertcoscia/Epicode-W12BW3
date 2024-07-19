@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getPostsAction } from "../../redux/actions";
+import { getPostsAction, getSimilarProfilesAction } from "../../redux/actions";
 import HomeLeftAside from "./HomeLeftAside";
 import HomeMain from "./HomeMain";
 import HomeRightAside from "./HomeRightAside";
@@ -13,6 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getPostsAction());
+    dispatch(getSimilarProfilesAction());
   }, []);
 
   return (

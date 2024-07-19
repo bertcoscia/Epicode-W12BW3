@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
 import { ThreeDots } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
 
 const SingleComment = ({ comment }) => {
+  const dispatch = useDispatch();
+  const similarProfiles = useSelector(state => state.similarProfiles.content);
   const whenPosted = createdAt => {
     const specificDate = new Date(createdAt);
     const currentDate = new Date();
@@ -18,22 +22,32 @@ const SingleComment = ({ comment }) => {
     }
   };
 
+  const findUser = commentAuthor => {
+    const filteredUser = similarProfiles.find(user => user.email === commentAuthor || user.username === commentAuthor);
+    setFoundUser(filteredUser);
+  };
+
+  useEffect(() => {
+    findUser(comment.author);
+  }, []);
+
+  const [foundUser, setFoundUser] = useState(null);
+
   return (
     <div className="mt-3 d-flex">
       <div>
-        <img src="https://thispersondoesnotexist.com" alt="" style={{ height: "32px", width: "32px" }} className="rounded-circle me-3" />
+        <img src={foundUser && foundUser.image} alt="" style={{ height: "32px", width: "32px" }} className="rounded-circle me-3" />
       </div>
       <div style={{ width: "100%" }}>
         <div className="d-flex justify-content-between">
           <div className="d-flex flex-column align-items-start">
-            <h6 className="m-0">{comment.author}</h6>
-            <p className="text-muted mb-2 small">TITOLO QUALUNQUE</p>
+            {foundUser && <h6>{`${foundUser.name} ${foundUser.surname}`}</h6>}
+            {foundUser && <p className="text-muted mb-2 small">{foundUser.title}</p>}
           </div>
           <small className="text-muted d-flex align-items-center">
             {whenPosted(comment.createdAt)} <ThreeDots className="ms-2" />{" "}
           </small>
         </div>
-        <p className="mb-3">{comment.comment}</p>
 
         <div className="d-flex">
           <p className="text-muted">Like • </p>
