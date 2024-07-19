@@ -29,7 +29,9 @@ const SingleComment = ({ comment }) => {
             <h6 className="m-0">{comment.author}</h6>
             <p className="text-muted mb-2 small">TITOLO QUALUNQUE</p>
           </div>
-          <small className="text-muted">{whenPosted(comment.createdAt)}</small>
+          <small className="text-muted d-flex align-items-center">
+            {whenPosted(comment.createdAt)} <ThreeDots className="ms-2" />{" "}
+          </small>
         </div>
         <p className="mb-3">{comment.comment}</p>
 
