@@ -3,10 +3,12 @@ export const GET_SIMILAR_PROFILES = "GET_SIMILAR_PROFILES";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const GET_JOBS = "GET_JOBS";
+export const GET_COMMENTS = "GET_COMMENTS";
 
 const urlPersonalProfile = "https://striveschool-api.herokuapp.com/api/profile/me";
 const urlProfiles = "https://striveschool-api.herokuapp.com/api/profile/";
 export const auth = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njk0ZGNkOTE5NmQ3YjAwMTVkNmI1MmEiLCJpYXQiOjE3MjEwMzE4OTcsImV4cCI6MTcyMjI0MTQ5N30.AOy5Mx1Ft4QVbhAVCIHUeNKEUmMKeOkHf2Cu_A4Q_Fc";
+export const authComments = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjZiZjk5NzdjMjM5YzAwMTUyZjRiM2MiLCJpYXQiOjE3MjEzNzcyNDMsImV4cCI6MTcyMjU4Njg0M30.gctLPCJGpk-2xa3GNBMPj3-sO6YYMFwym4y4uzlzPiI";
 
 export const getProfileAction = () => {
   return dispatch => {
@@ -125,5 +127,28 @@ export const getJobsAction = () => {
         });
       })
       .catch(error => console.log(error));
+  };
+};
+
+export const getCommentsAction = () => {
+  return dispatch => {
+    fetch("https://striveschool-api.herokuapp.com/api/comments/", {
+      headers: {
+        Authorization: authComments
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Cuouldn't get data - @getCommentsAction");
+        }
+      })
+      .then(comments => {
+        dispatch({
+          type: GET_COMMENTS,
+          payload: comments
+        });
+      });
   };
 };

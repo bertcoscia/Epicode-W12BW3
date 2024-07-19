@@ -1,9 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HomeNewPost from "./HomeNewPost";
 import SinglePost from "../SinglePost";
+import { useEffect } from "react";
+import { getCommentsAction } from "../../redux/actions";
 
 const HomeMain = () => {
   const posts = useSelector(state => state.posts.content);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCommentsAction());
+  }, []);
 
   return (
     <main>
@@ -11,7 +18,7 @@ const HomeMain = () => {
       <hr />
       {posts.length > 0 &&
         posts
-          .slice(-30)
+          .slice(-150)
           .reverse()
           .map(post => <SinglePost key={post._id} post={post} />)}
     </main>

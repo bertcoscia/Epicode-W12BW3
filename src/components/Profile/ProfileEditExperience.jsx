@@ -14,7 +14,7 @@ const ProfileEditExperience = ({ experience }) => {
 
   const [newExperience, setNewExperience] = useState({
     role: experience.role,
-    company: experience.role,
+    company: experience.company,
     startDate: experience.startDate,
     endDate: experience.endDate,
     description: experience.description,
@@ -168,7 +168,7 @@ const ProfileEditExperience = ({ experience }) => {
                   <option value="11">November</option>
                   <option value="12">December</option>
                 </Form.Select>
-                <Form.Select value={newExperience.endDate ? newExperience.endDate.split("-")[1] : ""} onChange={e => handleChange("endDate", `${e.target.value}-${newExperience.endDate.split("-")[1] || ""}`)}>
+                <Form.Select value={newExperience.endDate ? newExperience.endDate.split("-")[0] : ""} onChange={e => handleChange("endDate", `${e.target.value}-${newExperience.endDate.split("-")[1] || ""}`)}>
                   <option value="">Year</option>
                   {Array.from({ length: 10 }, (_, i) => new Date().getFullYear() - i).map(year => (
                     <option key={year} value={year}>

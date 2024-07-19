@@ -1,52 +1,44 @@
-import { useState } from "react";
-import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { auth } from "../redux/actions";
+import { useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getCommentsAction, getSimilarProfilesAction } from "../redux/actions";
 
 const Prova = () => {
-  const profile = useSelector(state => state.profile.content);
-  const [img, setImg] = useState(null);
+  const users = useSelector(state => state.similarProfiles.content);
+  const comments = useSelector(state => state.comments.content);
+  const dispatch = useDispatch();
 
-  const handleChangePic = event => {
-    setImg(event.target.files[0]);
-  };
+  // Calcola l'indice dell'ultimo commento solo se ci sono commenti
+  const lastCommentIndex = comments.length > 0 ? comments.length - 1 : null;
+  const lastComment = lastCommentIndex !== null ? comments[lastCommentIndex] : null;
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    if (img && profile) {
-      const formData = new FormData();
-      formData.append("profile", img);
-      if (formData) {
-        fetchPostPic(formData);
-      }
-    }
-  };
+  useEffect(() => {
+    dispatch(getCommentsAction());
+    dispatch(getSimilarProfilesAction());
+  }, [dispatch]);
 
-  const fetchPostPic = formData => {
-    fetch(`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`, {
-      method: "POST",
-      headers: {
-        Authorization: auth
-      },
-      body: formData
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Coulnd't send data - @postPic");
-        }
-      })
-      .catch(error => console.log(error));
-  };
+  // Filtra e rimuove duplicati
+  const uniqueFilteredUsers = lastComment ? [...new Map(users.filter(user => user.email === lastComment.author).map(user => [user.id, user])).values()] : [];
 
   return (
-    <Form style={{ marginTop: "150px", width: "50%", marginInline: "auto" }} onSubmit={handleSubmit}>
-      <InputGroup>
-        <FormControl type="file" accept="img/*" placeholder="Upload a picture" onChange={handleChangePic} />
-        <Button type="submit">Upload</Button>
-      </InputGroup>
-    </Form>
+    <Container style={{ marginTop: "150px", width: "50%", marginInline: "auto" }}>
+      {lastComment ? (
+        <div>
+          <h2>Author: {lastComment.author}</h2>
+          {uniqueFilteredUsers.length > 0 ? (
+            uniqueFilteredUsers.map(user => (
+              <h1 key={user.id}>
+                {user.name} {user.surname}
+              </h1>
+            ))
+          ) : (
+            <p>No users found with this email</p>
+          )}
+        </div>
+      ) : (
+        <p>No comments available</p>
+      )}
+    </Container>
   );
 };
 
