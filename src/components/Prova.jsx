@@ -1,52 +1,26 @@
-import { useState } from "react";
-import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { auth } from "../redux/actions";
+import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getCommentsAction, getSimilarProfilesAction } from "../redux/actions";
 
 const Prova = () => {
-  const profile = useSelector(state => state.profile.content);
-  const [img, setImg] = useState(null);
+  const users = useSelector(state => state.similarProfiles.content);
+  const comments = useSelector(state => state.comments.content);
+  const dispatch = useDispatch();
 
-  const handleChangePic = event => {
-    setImg(event.target.files[0]);
-  };
+  const lastComment = comments.length - 1;
+  const selectedUserArea = comments.length > 0 ? users.filter(user => user.email === comments[lastComment]?.author)[0]?.area : "No comments available";
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    if (img && profile) {
-      const formData = new FormData();
-      formData.append("profile", img);
-      if (formData) {
-        fetchPostPic(formData);
-      }
-    }
-  };
-
-  const fetchPostPic = formData => {
-    fetch(`https://striveschool-api.herokuapp.com/api/profile/${profile._id}/picture`, {
-      method: "POST",
-      headers: {
-        Authorization: auth
-      },
-      body: formData
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Coulnd't send data - @postPic");
-        }
-      })
-      .catch(error => console.log(error));
-  };
+  useEffect(() => {
+    dispatch(getCommentsAction());
+    dispatch(getSimilarProfilesAction());
+  }, []);
 
   return (
-    <Form style={{ marginTop: "150px", width: "50%", marginInline: "auto" }} onSubmit={handleSubmit}>
-      <InputGroup>
-        <FormControl type="file" accept="img/*" placeholder="Upload a picture" onChange={handleChangePic} />
-        <Button type="submit">Upload</Button>
-      </InputGroup>
-    </Form>
+    <Container style={{ marginTop: "150px", width: "50%", marginInline: "auto" }}>
+      <p> {comments.length > 0 && comments[lastComment].author}</p>
+      <h1>{users.length > 0 && { selectedUserArea }}</h1>
+    </Container>
   );
 };
 

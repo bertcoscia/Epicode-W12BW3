@@ -205,7 +205,11 @@ const ProfileExperience = ({ id }) => {
           </Modal>
         </div>
       </div>
-      {experience.length > 0 && experience.map(item => <SingleExperience key={item._id} experience={item} />)}
+      {experience.length > 0 &&
+        experience
+          .slice()
+          .reverse()
+          .map(item => <SingleExperience key={item._id} experience={item} />)}
     </div>
   );
 };
