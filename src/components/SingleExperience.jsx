@@ -1,6 +1,9 @@
-import { Pencil } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
+import ProfileEditExperience from "./Profile/ProfileEditExperience";
 
 const SingleExperience = ({ experience }) => {
+  const profile = useSelector(state => state.profile.content);
+
   const monthName = monthNumber => {
     switch (monthNumber) {
       case "01":
@@ -44,13 +47,13 @@ const SingleExperience = ({ experience }) => {
       <div className="ms-2 w-100">
         <div className="d-flex justify-content-between">
           <h5 className="mb-0">{experience.role}</h5>
-          <Pencil style={{ cursor: "pointer" }} />
+          {profile && <ProfileEditExperience experience={experience} />}
         </div>
         <p className="mb-0">{experience.company}</p>
         <p className="mb-0 text-muted">
           {monthName(startMonth)}
           {experience.startDate.substring(0, 4)} - {monthName(endMonth)}
-          {experience.endDate && experience.endDate.substring(0, 4)}
+          {experience.endDate ? experience.endDate.substring(0, 4) : "Present"}
         </p>
         <p className="text-muted">{experience.area}</p>
         <p className="pt-0">{experience.description}</p>

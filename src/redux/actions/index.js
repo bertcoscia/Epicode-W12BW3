@@ -1,7 +1,6 @@
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_SIMILAR_PROFILES = "GET_SIMILAR_PROFILES";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
-export const POST_EXPERIENCE = "POST_EXPERIENCE";
 export const GET_POSTS = "GET_POSTS";
 export const GET_JOBS = "GET_JOBS";
 
