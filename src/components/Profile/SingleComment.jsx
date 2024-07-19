@@ -47,6 +47,7 @@ const SingleComment = ({ comment }) => {
             {whenPosted(comment.createdAt)} <ThreeDots className="ms-2" />{" "}
           </small>
         </div>
+        <p>{comment.comment}</p>
 
         <div className="d-flex">
           <p className="text-muted">Like • </p>

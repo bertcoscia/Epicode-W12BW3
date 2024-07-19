@@ -62,6 +62,7 @@ const SinglePost = ({ post }) => {
   const handleSubmit = event => {
     event.preventDefault();
     postComment(comment);
+    setComment({ ...comment, comment: "" });
   };
 
   return (
@@ -88,7 +89,7 @@ const SinglePost = ({ post }) => {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="my-3 d-flex align-items-center">
               <img src={profile.image} alt="" style={{ height: "32px", width: "32px" }} className="rounded-circle me-3" />
-              <Form.Control type="text" placeholder="Add a comment..." className="px-4 py-2 rounded-pill border border-dark-subtle align-self-center w-100 text-start btn-light" onChange={handleTextChange} />
+              <Form.Control value={comment.comment} type="text" placeholder="Add a comment..." className="px-4 py-2 rounded-pill border border-dark-subtle align-self-center w-100 text-start btn-light" onChange={handleTextChange} />
               <Button variant="ligth" type="submit">
                 <SendFill />
               </Button>
