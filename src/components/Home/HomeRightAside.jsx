@@ -6,7 +6,7 @@ const HomeRightAside = () => {
   const profile = useSelector(state => state.profile.content);
 
   return (
-    <aside style={{ flexShrink: "0", flexBasis: "300px" }} className="d-none d-lg-block">
+    <aside style={{ flexShrink: "0", flexBasis: "300px" }} className="d-none d-lg-block position-relative">
       <div className="bg-white rounded p-3 mb-2 card">
         <div className="d-flex justify-content-between">
           <h3>LinkedIn news</h3>
@@ -56,51 +56,53 @@ const HomeRightAside = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded p-3 text-center card">
-        <small className="text-muted">{`${profile.name}, unlock your full potential with LinkedIn Premium`}</small>
-        <div className="d-flex justify-content-center my-3">
-          <img src={profile.image} alt="" style={{ height: "70px", width: "70px" }} className="rounded-circle me-3" />
-          <img src="https://media.licdn.com/dms/image/D5610AQG472GRwcHZJQ/image-shrink_1280/0/1710175969658?e=1721487600&v=beta&t=_IDwzQpFquuMqdVVE-0VidnGrXVqBJP92q4O7zpmkYw" alt="" style={{ height: "70px", width: "70px" }} />
+      <div className="position-sticky" style={{ top: "85px" }}>
+        <div className="bg-white rounded p-3 text-center card">
+          <small className="text-muted">{`${profile.name}, unlock your full potential with LinkedIn Premium`}</small>
+          <div className="d-flex justify-content-center my-3">
+            <img src={profile.image} alt="" style={{ height: "70px", width: "70px" }} className="rounded-circle me-3" />
+            <img src="https://media.licdn.com/dms/image/D5610AQG472GRwcHZJQ/image-shrink_1280/0/1710175969658?e=1721487600&v=beta&t=_IDwzQpFquuMqdVVE-0VidnGrXVqBJP92q4O7zpmkYw" alt="" style={{ height: "70px", width: "70px" }} />
+          </div>
+          <p className="text-light-emphasis">See who&apos;s viewed your profile in the last 90 days</p>
+          <Button variant="outline-primary" className="rounded-pill px-3">
+            Try for free
+          </Button>
         </div>
-        <p className="text-light-emphasis">See who&apos;s viewed your profile in the last 90 days</p>
-        <Button variant="outline-primary" className="rounded-pill px-3">
-          Try for free
-        </Button>
-      </div>
 
-      <div className="d-flex justify-content-center flex-wrap column-gap-3 px-3 my-2">
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>About</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Accessibility</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Help Center</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Privacy & Terms</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Ad Choices</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Advertising</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Business Services</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>Get the LinkedIn app</small>
-        </a>
-        <a href="#home" className="link-secondary text-decoration-none home-footer-link">
-          <small>More</small>
-        </a>
-      </div>
+        <div className="d-flex justify-content-center flex-wrap column-gap-3 px-3 my-2">
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>About</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Accessibility</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Help Center</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Privacy & Terms</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Ad Choices</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Advertising</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Business Services</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>Get the LinkedIn app</small>
+          </a>
+          <a href="#home" className="link-secondary text-decoration-none home-footer-link">
+            <small>More</small>
+          </a>
+        </div>
 
-      <div className="d-flex justify-content-center">
-        <img className="me-2" src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr" alt="" />
-        <small>LinkedIn Corporation &copy; 2024</small>
+        <div className="d-flex justify-content-center">
+          <img className="me-2" src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr" alt="" />
+          <small>LinkedIn Corporation &copy; 2024</small>
+        </div>
       </div>
     </aside>
   );
