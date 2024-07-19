@@ -2,7 +2,7 @@ import { PlusLg } from "react-bootstrap-icons";
 import SingleExperience from "../SingleExperience";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Form, Modal, Button } from "react-bootstrap";
+import { Form, Modal, Button, FormControl } from "react-bootstrap";
 import { auth, getExperienceAction } from "../../redux/actions";
 
 const ProfileExperience = ({ id }) => {
@@ -31,28 +31,56 @@ const ProfileExperience = ({ id }) => {
     }));
   };
 
-  const postExperience = experience => {
-    fetch(`https://striveschool-api.herokuapp.com/api/profile/${experience.user}/experiences`, {
-      method: "POST",
-      headers: {
-        Authorization: auth,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(experience)
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Coulnd't send data - @postExperienceAction");
+  const postExperience = async experience => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${experience.user}/experiences`, {
+        method: "POST",
+        headers: {
+          Authorization: auth,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(experience)
+      });
+      if (response.ok) {
+        const responseData = await response.json();
+        if (img) {
+          await fetchExperiencePic(id, responseData._id, img);
         }
-      })
-      .catch(error => console.log(error));
+        return responseData._id;
+      } else {
+        throw new Error("Coulnd't send data - @postExperienceAction");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleSubmit = event => {
+  const fetchExperiencePic = async (profileId, experienceId, file) => {
+    const formData = new FormData();
+    formData.append("experience", file);
+
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${profileId}/experiences/${experienceId}/picture`, {
+        method: "POST",
+        headers: {
+          Authorization: auth
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        return await response.json();
+      } else {
+        throw new Error("Couldn't send data - @fetchExperiencePic @ProfileExperience.jsx");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async event => {
     event.preventDefault();
-    postExperience(newExperience);
+    await postExperience(newExperience);
     setNewExperience({
       role: "",
       company: "",
@@ -165,9 +193,7 @@ const ProfileExperience = ({ id }) => {
                 <Form.Group className="mb-3">
                   <Modal.Title className="fs-5">Media</Modal.Title>
                   <p>Add media like images, documents, sites or presentations.</p>
-                  <Button variant="outline-primary" className="rounded-pill">
-                    + Add media
-                  </Button>
+                  <FormControl type="file" accept="img/*" onChange={handleChangePic} className="my-3" />
                 </Form.Group>
                 <Modal.Footer>
                   <Button variant="primary" className="rounded-pill px-3" type="submit">
