@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { ThreeDots } from "react-bootstrap-icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const SingleComment = ({ comment }) => {
-  const dispatch = useDispatch();
   const similarProfiles = useSelector(state => state.similarProfiles.content);
   const whenPosted = createdAt => {
     const specificDate = new Date(createdAt);
