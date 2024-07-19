@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { getSimilarProfilesAction } from "../../redux/actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -15,13 +15,15 @@ const Profile = () => {
   }, []);
 
   return (
-    <Container style={{ marginTop: "110px" }}>
-      <Row>
+    <>
+      <Container style={{ marginTop: "110px" }} className="d-flex home-flex-container">
         <ProfileMain />
         <ProfileRightAside />
-      </Row>
-      <FooterComponent />
-    </Container>
+      </Container>
+      <Container>
+        <FooterComponent />
+      </Container>
+    </>
   );
 };
 

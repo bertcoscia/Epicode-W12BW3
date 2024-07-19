@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Image, Col, Modal, Form, InputGroup, FormControl } from "react-bootstrap";
+import { Button, Image, Modal, Form, InputGroup, FormControl } from "react-bootstrap";
 import { ArrowRight, Envelope, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, getProfileAction } from "../../redux/actions";
@@ -73,7 +73,7 @@ function ProfileMain() {
   return (
     <>
       {profile && (
-        <Col xs={12} lg={8} xl={9}>
+        <main className="profile-main">
           <div id="profile" className="card mb-2 rounded-3">
             <img style={{ height: "200px" }} src={randomHeroImage} alt="Background Image" className="object-fit-cover img-fluid rounded-top" />
             <div className="position-absolute" style={{ top: "100px", left: "25px" }}>
@@ -320,7 +320,7 @@ function ProfileMain() {
               Show all 5 languages <ArrowRight />
             </h2>
           </div>
-        </Col>
+        </main>
       )}
     </>
   );

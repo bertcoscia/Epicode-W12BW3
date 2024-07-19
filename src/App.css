@@ -147,6 +147,15 @@ nav {
   .home-flex-container {
     column-gap: 0.5rem;
   }
+
+  .profile-aside {
+    flex-shrink: 0;
+    flex-basis: 300px;
+  }
+
+  .profile-main {
+    flex-grow: 1;
+  }
 }
 
 @media screen and (max-width: 1024px) {
